@@ -8,9 +8,9 @@ using Blackjack.Interfaces;
 
 namespace Blackjack {
     public class Card : ICard {
-        public CardSuit Suit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public CardValue Value { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsHidden { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public CardSuit Suit { get; set; }
+        public CardValue Value { get; set; }
+        public bool IsHidden { get; set; }
 
         /// <summary>
         /// Returns the corresponding int value of a card's Value enum

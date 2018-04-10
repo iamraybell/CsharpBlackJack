@@ -7,6 +7,6 @@ using Blackjack.Interfaces;
 
 namespace Blackjack {
     class ComputerDealer : IPlayer {
-        public IHand hand { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IHand hand { get; set; }
     }
 }
