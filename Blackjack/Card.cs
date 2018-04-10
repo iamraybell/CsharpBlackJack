@@ -19,5 +19,13 @@ namespace Blackjack {
         public int GetIntValue() {
             return (int) Value;
         }
+
+        public override string ToString() {
+            if (IsHidden)
+                return "[*]";
+
+            //return "[" + 
+            return base.ToString();
+        }
     }
 }

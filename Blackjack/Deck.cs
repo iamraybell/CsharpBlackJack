@@ -7,9 +7,13 @@ using Blackjack.Interfaces;
 
 namespace Blackjack {
     public class Deck : IDeck {
-        public List<ICard> cards { get; set; }
+        public List<ICard> Cards { get; set; }
 
-        public ICard GetCard() {
+        public ICard Draw() {
+            throw new NotImplementedException();
+        }
+
+        public void Init() {
             throw new NotImplementedException();
         }
 

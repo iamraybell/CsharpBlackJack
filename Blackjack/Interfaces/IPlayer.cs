@@ -8,6 +8,11 @@ namespace Blackjack.Interfaces
 {
     public interface IPlayer
     {
-        IHand hand { get; set; }
+        String Name { get; set; }
+        IHand Hand { get; set; }
+
+        void Hit();
+
+        void Stand();
     }
 }

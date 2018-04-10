@@ -7,6 +7,15 @@ using Blackjack.Interfaces;
 
 namespace Blackjack {
     class ComputerDealer : IPlayer {
-        public IHand hand { get; set; }
+        public IHand Hand { get; set; }
+        public string Name { get; set; }
+
+        public void Hit() {
+            throw new NotImplementedException();
+        }
+
+        public void Stand() {
+            throw new NotImplementedException();
+        }
     }
 }
