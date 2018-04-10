@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Enums
 {
-    enum GameState
+    public enum GameState
     {
     }
 }

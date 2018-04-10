@@ -4,10 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blackjack.Interfaces
-{
-    public interface IPlayer
-    {
-        IHand hand { get; set; }
+namespace Blackjack {
+    public class GameManager {
     }
 }
