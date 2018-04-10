@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\CardSuit.cs" />
+    <Compile Include="Enums\CardValue.cs" />
+    <Compile Include="Enums\GameState.cs" />
     <Compile Include="Interfaces\ICard.cs" />
     <Compile Include="Interfaces\IHand.cs" />
     <Compile Include="Interfaces\IInputProvider.cs" />
