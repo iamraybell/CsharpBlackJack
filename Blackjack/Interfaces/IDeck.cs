@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Interfaces {
     public interface IDeck {
-        List<ICard> cards { get; set; }
+        List<ICard> Cards { get; set; }
+
+        void Init();
 
         void Shuffle();
 
-        ICard GetCard();
+        ICard Draw();
 
     }
 }
