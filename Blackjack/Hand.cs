@@ -29,7 +29,7 @@ namespace Blackjack {
         /// <returns>Blackjack hand value</returns>
         public int GetTotalValue(List<ICard> hand) {
             int total = 0;
-            int aceCount = hand.Where(x => x.Value == CardValue.Ace).Count();
+            int aceCount = hand.Where(x => x.Name == CardName.Ace).Count();
 
             foreach (ICard card in hand) {
                 total += card.GetIntValue();

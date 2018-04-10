@@ -13,13 +13,15 @@ namespace Blackjack {
     /// </summary>
     public class Card : ICard {
         public CardSuit Suit { get; set; }
-        public CardValue Value { get; set; }
+        public CardName Name { get; set; }
+        public int Value { get; set; }
         public bool IsHidden { get; set; }
 
-        public Card(CardSuit suit, CardValue value, bool isHidden = false) {
+        public Card(CardSuit suit, CardName name, int value) {
             Suit = suit;
+            Name = name;
             Value = value;
-            IsHidden = isHidden;
+            IsHidden = false;
         }
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace Blackjack {
         /// </summary>
         /// <returns>Card's blackjack value as an int</returns>
         public int GetIntValue() {
-            return Value.GetIntValue();
+            return Value;
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace Blackjack {
             if (IsHidden)
                 return "[*]";
 
-            return "[" + Value.GetString() + "]";
+            return "[" + Name.GetString() + "]";
         }
     }
 }

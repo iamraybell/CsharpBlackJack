@@ -10,7 +10,8 @@ namespace Blackjack.Interfaces
     public interface ICard
     {
         CardSuit Suit { get; set; }
-        CardValue Value { get; set; }
+        CardName Name { get; set; }
+        int Value { get; set; }
         bool IsHidden { get; set; }
 
         int GetIntValue();

@@ -25,11 +25,11 @@ namespace Blackjack {
 
         public void Init() {
             CardSuit[] css = Enum.GetValues(typeof(CardSuit)).Cast<CardSuit>().ToArray();
-            CardValue[] cvs = Enum.GetValues(typeof(CardValue)).Cast<CardValue>().ToArray();
+            CardName[] cvs = Enum.GetValues(typeof(CardName)).Cast<CardName>().ToArray();
 
             foreach (CardSuit cs in css) {
-                foreach (CardValue cv in cvs) {
-                    Card card = new Card(cs, cv, true);
+                foreach (CardName cv in cvs) {
+                    Card card = new Card(cs, cv, 1);
                     Cards.Add(card);
                 }
             }

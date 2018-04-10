@@ -8,10 +8,10 @@ using System.Reflection;
 
 namespace Blackjack.Enums
 {
-    public enum CardValue
+    public enum CardName
     {
         [Description("A")]
-        Ace = 1,
+        Ace,
         [Description("2")]
         Two,
         [Description("3")]
@@ -40,7 +40,7 @@ namespace Blackjack.Enums
 
     public static class Extensions {
 
-        private static string GetEnumDescription(CardValue value) {
+        private static string GetEnumDescription(CardName value) {
             FieldInfo fi = value.GetType().GetField(value.ToString());
             DescriptionAttribute[] attributes =
                 (DescriptionAttribute[])fi.GetCustomAttributes(
@@ -53,12 +53,12 @@ namespace Blackjack.Enums
             }
         }
 
-        public static string GetString(this CardValue cv) {
+        public static string GetString(this CardName cv) {
 
             return GetEnumDescription(cv);
         }
 
-        public static int GetIntValue(this CardValue cv) {
+        /*public static int GetIntValue(this CardValue cv) {
             int retInt = (int) cv;
 
             switch (cv) {
@@ -81,7 +81,7 @@ namespace Blackjack.Enums
             }
 
             return retInt;
-        }
+        }*/
     }
 
     /*  POTENTIAL WAY TO INITIALIZE A DECK OF CARDS
