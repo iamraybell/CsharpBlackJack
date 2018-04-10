@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Enums
 {
-    enum CardSuit
+    public enum CardSuit
     {
-    }
+        Hearts,
+        Spades,
+        Clubs,
+        Diamonds,
+    };
 }

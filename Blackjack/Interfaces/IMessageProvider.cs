@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Interfaces
 {
-    interface ISuit
+    public interface IMessageProvider
     {
+        string M_Welcome { get; set; }
+        string M_Rules { get; set; }
+
+        // Add more properties as needed
     }
 }
