@@ -8,7 +8,7 @@ using Blackjack.Enums;
 
 namespace Blackjack {
     public class Hand : IHand {
-        public List<ICard> Cards { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<ICard> Cards { get; set; }
 
         public void AddCard(ICard card) {
             throw new NotImplementedException();

@@ -7,7 +7,7 @@ using Blackjack.Interfaces;
 
 namespace Blackjack {
     class MessageProvider : IMessageProvider {
-        public string M_Welcome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string M_Rules { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string M_Welcome { get; set; }
+        public string M_Rules { get; set; }
     }
 }
