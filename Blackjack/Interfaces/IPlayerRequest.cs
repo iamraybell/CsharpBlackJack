@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Interfaces
 {
-    interface GameManager
+    interface IPlayerRequest
     {
     }
 }
