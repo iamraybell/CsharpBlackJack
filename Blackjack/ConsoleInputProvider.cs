@@ -8,14 +8,16 @@ using Blackjack.Interfaces;
 namespace Blackjack {
 
     /// <summary>
-    /// Ths ConsoleInputProvider class, provides inputs from the Console
+    /// This ConsoleInputProvider class, provides inputs from the Console
     /// </summary>
-    public class ConsoleInputProvider : IInputProvider {
+    public class ConsoleInputProvider : IInputProvider
+    {
         /// <summary>
         /// Read a line from the console
         /// </summary>
         /// <returns>A string</returns>
-        public string Read() {
+        public string Read()
+        {
             // This function should read a line from the console and return it
             var input = Console.ReadLine();
             return input;
