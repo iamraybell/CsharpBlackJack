@@ -7,7 +7,7 @@ using Blackjack.Interfaces;
 
 namespace Blackjack
 {
-    class MessageProvider : IMessageProvider
+    public class MessageProvider : IMessageProvider
     {
         /// <summary>
         /// A welcome message
@@ -35,6 +35,16 @@ namespace Blackjack
         /// Prints a welcome message to the console
         /// <param name="welcome"> The welcome message that is printed at the beginning of the game</param>
         /// </summary>
+        public void printWelcome(string welcome)
+        {
+            ConsoleOutputProvider consoleOutputProvider = new ConsoleOutputProvider();
+            //call the console output provider's writeLine method and pass in the welcome; this outputs the rules to the console
+            consoleOutputProvider.WriteLine(welcome);
+        }
+
+        /// <summary>
+        /// Prints a welcome message to the console
+        /// </summary>
         public void printWelcome()
         {
             ConsoleOutputProvider consoleOutputProvider = new ConsoleOutputProvider();
@@ -45,6 +55,16 @@ namespace Blackjack
         /// <summary>
         /// Prints the rules to the console
         /// <param name="rules"> The rules of the game, to be printed to the console by this method
+        /// </summary>
+        public void printRules(string rules)
+        {
+            ConsoleOutputProvider consoleOutputProvider = new ConsoleOutputProvider();
+            //call the console output provider's writeLine method and pass in the rules; this outputs the rules to the console
+            consoleOutputProvider.WriteLine(rules);
+        }
+
+        /// <summary>
+        /// Prints the rules to the console
         /// </summary>
         public void printRules()
         {
