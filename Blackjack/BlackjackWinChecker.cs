@@ -18,6 +18,7 @@ namespace Blackjack {
         /// </summary>
         public WinState WinState { get; private set; }
 
+
         /// <summary>
         /// Check if the hand total equals a win condition
         /// </summary>
