@@ -16,9 +16,9 @@ namespace Blackjack {
         /// <summary>
         /// Check if the hand total equals a win condition
         /// </summary>
-        /// <param name="deck">The deck</param>
-        /// <param name="hand">The hand</param>
+        /// <param name="hand1">The Dealer hand</param>
+        /// <param name="hand2">The HumanPlayer hand</param>
         /// <returns></returns>
-        public bool IsWin(IDeck deck, IHand hand);
+        public bool IsWin(IHand hand1, IHand hand2);
     }
 }
