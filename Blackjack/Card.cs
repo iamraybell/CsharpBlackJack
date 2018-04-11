@@ -21,7 +21,7 @@ namespace Blackjack {
             Suit = suit;
             Name = name;
             Value = value;
-            IsHidden = false;
+            IsHidden = true;
         }
 
         /// <summary>
