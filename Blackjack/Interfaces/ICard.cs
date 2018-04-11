@@ -13,5 +13,11 @@ namespace Blackjack.Interfaces
         CardName Name { get; set; }
         int Value { get; set; }
         bool IsHidden { get; set; }
+
+        /// <summary>
+        /// Returns the corresponding int value of a card's Value enum
+        /// </summary>
+        /// <returns>Card's value as an int</returns>
+        int GetIntValue();
     }
 }

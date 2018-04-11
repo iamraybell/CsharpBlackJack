@@ -3,36 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Blackjack.Interfaces;
 using Blackjack.Enums;
+using Blackjack.Exceptions;
+using Blackjack.Interfaces;
 
 namespace Blackjack {
-    public class GameManager {
+    public class GameManager
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        private IInputProvider iinputProvider;
 
-        /// <summary>
-        /// Enumerable data type that holds all instances of IPlayer
-        /// </summary>
-        public IEnumerable<IPlayer> Players { get; private set; }
-        /// <summary>
-        /// Enumerator state of the application loop
-        /// </summary>
-        public GameState State { get; private set; }
-        public GameManager(
-            IEnumerable<IPlayer> players, 
-            GameState initialState)
+        private IOutputProvider ioutputProvider;
+
+        private ICard card;
+
+        private IDeck deck;
+
+        private List<IPlayer> players;
+
+
+        public void AssignInitialCardsToPlayer()
         {
-            Players = players;
-            State = initialState;
+            players[0].Hand.Cards.Add(deck.Draw());
+            players[0].Hand.Cards.Add(deck.Draw());
+        } 
+
+        public void AssignInitialCardsToDealer()
+        {
+            players[1].Hand.Cards.Add(deck.Draw());
+            players[1].Hand.Cards.Add(deck.Draw());
         }
 
-        public void InitiateGame()
+        /// <summary>
+        /// After typing Deal, HumanPlayer is assigned 2 cards which are displayed along with their total on the screen
+        /// </summary>
+        public void TypeDealAndShowCards()
         {
-            while(State != GameState.TERMINATING)
-            {
+            ioutputProvider.WriteLine("Type Deal to have cards dealt");
+            iinputProvider.Read();
 
-            }
+            AssignInitialCardsToPlayer();
+            AssignInitialCardsToDealer();
+
+            ioutputProvider.WriteLine($"Dealer: [{players[1].Hand.Cards[0].GetIntValue()}] [{players[1].Hand.Cards[1].GetIntValue()}]");
+            ioutputProvider.WriteLine($"{players[0].Name}: [{players[0].Hand.Cards[0].GetIntValue()}] [{players[0].Hand.Cards[1].GetIntValue()}] - {players[0].Hand.GetTotalValue(players[0].Hand.Cards)}");
+
         }
 
-        
     }
 }
