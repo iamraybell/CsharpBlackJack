@@ -12,7 +12,13 @@ namespace Blackjack {
     /// Represents a player blackjack hand
     /// </summary>
     public class Hand : IHand {
+
+        private const int MAX_VALUE = 21;
         public List<ICard> Cards { get; set; }
+
+        public Hand() {
+            Cards = new List<ICard>();
+        }
 
         /// <summary>
         /// Add the passed in ICard to the hand
@@ -22,6 +28,8 @@ namespace Blackjack {
             Cards.Add(card);
         }
 
+        
+
         /// <summary>
         /// Returns the optimal value for the blackjack hand
         /// </summary>
@@ -30,21 +38,14 @@ namespace Blackjack {
         public int GetTotalValue(List<ICard> hand) {
             int total = 0;
             int aceCount = hand.Where(x => x.Name == CardName.Ace).Count();
-            //Int aceCount = 0;
 
             foreach (ICard card in hand) {
-                total += card.GetIntValue();
-                /*
-                 * Can use a ternary to avoid using a linq statement
-                 * 
-                 * aceCount += hand.Name == CardName.Ace ? 1 : 0;
-                 * 
-                 * :D
-                 * */
+                total += card.Value;
             }
 
-            while (total > 21 && aceCount > 0) {
+            while (total > MAX_VALUE && aceCount > 0) {
                 total -= 10;
+                aceCount--;
             }
 
             return total;
@@ -59,6 +60,15 @@ namespace Blackjack {
         public int CompareTo(IHand other) {
             int myHand = GetTotalValue(Cards);
             int otherHand = GetTotalValue(other.Cards);
+
+            if (myHand > MAX_VALUE && otherHand > MAX_VALUE)
+                return 0;
+
+            if (myHand > MAX_VALUE)
+                return -1;
+
+            if (otherHand > MAX_VALUE)
+                return 1;
 
             return myHand - otherHand;
         }
