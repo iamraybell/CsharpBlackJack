@@ -7,7 +7,7 @@ using Blackjack.Enums;
 
 namespace Blackjack.Interfaces
 {
-    interface ICardProvider
+    public interface ICardProvider
     {
         /// <summary>
         /// This will provide a collection  of cards and return them to caller.

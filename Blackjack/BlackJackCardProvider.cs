@@ -9,8 +9,7 @@ using Blackjack.Interfaces;
 namespace Blackjack
 {
     public  class BlackJackCardProvider: ICardProvider
-    {
-       
+    {      
 
 
         public IEnumerable<ICard> GetCards()

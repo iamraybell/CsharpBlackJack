@@ -11,12 +11,13 @@ namespace Blackjack {
         public List<ICard> Cards { get; set; }
         private List<ICard> Shuffler { get; set; }
 
-        public Deck() {
-            Init();
-        }
+        private ICardProvider cardProvider { get; set; }
 
-        public Deck(List<ICard> cards) {
-            Cards = cards;
+        public Deck (ICardProvider cardProvider) {
+            Cards = new List<ICard>();
+            Shuffler = new List<ICard>();
+            this.cardProvider = cardProvider;
+            Init();
         }
 
         public ICard Draw() {
@@ -31,7 +32,10 @@ namespace Blackjack {
         }
 
         public void Init() {
-
+            Cards.Clear();
+            Shuffler.Clear();
+            Cards = cardProvider.GetCards().ToList();
+            Shuffle();
         }
 
         public void Shuffle() {
