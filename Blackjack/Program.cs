@@ -11,9 +11,10 @@ namespace Blackjack
     {
         static void Main(string[] args)
         {
-            CardName cv = CardName.Ace;
-
-            int temp = (int)cv;
+            
+            var testBJCP = new BlackJackCardProvider();
+            testBJCP.GetValue(CardName.Eight);
+            
         }
     }
 }
