@@ -20,7 +20,14 @@ namespace Blackjack {
         }
 
         public ICard Draw() {
-            throw new NotImplementedException();
+            if (Cards.Count == 0)
+                throw new Exception();
+
+            ICard card = Cards[0];
+            Cards.RemoveAt(0);
+            Shuffler.Add(card);
+
+            return card;
         }
 
         public void Init() {
