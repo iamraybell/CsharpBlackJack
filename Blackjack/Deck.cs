@@ -20,19 +20,18 @@ namespace Blackjack {
         }
 
         public ICard Draw() {
-            throw new NotImplementedException();
+            if (Cards.Count == 0)
+                throw new Exception();
+
+            ICard card = Cards[0];
+            Cards.RemoveAt(0);
+            Shuffler.Add(card);
+
+            return card;
         }
 
         public void Init() {
-            CardSuit[] css = Enum.GetValues(typeof(CardSuit)).Cast<CardSuit>().ToArray();
-            CardName[] cvs = Enum.GetValues(typeof(CardName)).Cast<CardName>().ToArray();
 
-            foreach (CardSuit cs in css) {
-                foreach (CardName cv in cvs) {
-                    Card card = new Card(cs, cv, 1);
-                    Cards.Add(card);
-                }
-            }
         }
 
         public void Shuffle() {

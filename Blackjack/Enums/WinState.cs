@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Blackjack.Enums {
-    public enum PlayerAction {
+
+    public enum WinState
+    {
+        win,
+        lose,
+        draw
     }
 }
