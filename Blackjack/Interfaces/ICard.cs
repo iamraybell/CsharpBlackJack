@@ -13,7 +13,5 @@ namespace Blackjack.Interfaces
         CardName Name { get; set; }
         int Value { get; set; }
         bool IsHidden { get; set; }
-
-        int GetIntValue();
     }
 }
