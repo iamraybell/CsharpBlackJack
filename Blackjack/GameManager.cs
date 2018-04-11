@@ -17,11 +17,85 @@ namespace Blackjack {
 
         private IOutputProvider ioutputProvider;
 
+        private PlayerManager playerManager;
+
         private ICard card;
 
         private IDeck deck;
 
         private List<IPlayer> players;
+        int currentPlayerIndex;
+
+        GameState State;
+
+        IPlayer dealer;
+
+
+
+        public GameManager(IDeck deck, IOutputProvider output, IInputProvider input, PlayerManager pm)
+        {
+            this.deck = deck;
+
+            iinputProvider = input;
+            ioutputProvider = output;
+            playerManager = pm;
+
+            State = GameState.INITIATING_ROUND;
+
+        }
+
+        /// <summary>
+        /// Initiates a reocurring loop unitl the game state is set to TERMINATING
+        /// </summary>
+        public void InitiateLoop()
+        {
+
+            while (State != GameState.TERMINATING)
+            {
+                InitiateNewRound();
+            }
+        }
+
+        void InitiateNewRound()
+        {
+            if(State == GameState.INITIATING_ROUND)
+            {
+                foreach (var player in players)
+                {
+                    ResetHand(player);
+                }
+                State = GameState.INITIATING_TURN;
+            }
+        }
+
+        void ResetHand(IPlayer player)
+        {
+            player.Hand = new Hand();
+            for(int i = 0; i < 2; i++)
+            {
+                var card = deck.Draw();
+                player.Hand.AddCard(card);
+            }
+        }
+
+
+        void InitiatPlayerTurn()
+        {
+            if(State == GameState.RUNNING)
+            {
+
+            }
+        }
+
+
+        void InitiateRoundOfDealing()
+        {
+            if(State == GameState.DEALING)
+            {
+
+            }
+        }
+
 
 
         public void AssignInitialCardsToPlayer()
@@ -29,6 +103,7 @@ namespace Blackjack {
             players[0].Hand.Cards.Add(deck.Draw());
             players[0].Hand.Cards.Add(deck.Draw());
         } 
+
 
         public void AssignInitialCardsToDealer()
         {

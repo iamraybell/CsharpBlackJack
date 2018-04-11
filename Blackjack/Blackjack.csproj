@@ -70,6 +70,7 @@
     <Compile Include="Interfaces\IMessageProvider.cs" />
     <Compile Include="Interfaces\IWinner.cs" />
     <Compile Include="MessageProvider.cs" />
+    <Compile Include="PlayerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

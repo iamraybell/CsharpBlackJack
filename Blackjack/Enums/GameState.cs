@@ -10,7 +10,7 @@ namespace Blackjack.Enums
     {
         RUNNING,
         DEALING,
-        INIATING_NEW_ROUND,
+        INITIATING_ROUND,
         INITIATING_TURN,
         WIN_CHECKING,
         TERMINATING
