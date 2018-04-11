@@ -56,7 +56,9 @@
     <Compile Include="GameManager.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="HumanPlayer.cs" />
+    <Compile Include="BlackJackCardProvider.cs" />
     <Compile Include="Interfaces\ICard.cs" />
+    <Compile Include="Interfaces\ICardProvider.cs" />
     <Compile Include="Interfaces\IHand.cs" />
     <Compile Include="Interfaces\IInputProvider.cs" />
     <Compile Include="Interfaces\IDeck.cs" />
