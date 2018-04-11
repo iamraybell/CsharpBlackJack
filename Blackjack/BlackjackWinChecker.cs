@@ -11,7 +11,7 @@ namespace Blackjack {
     /// <summary>
     /// BlackjackWinChecker, checks for the win condition
     /// </summary>
-    public class BlackjackWinChecker : IWinChecker
+    public class BlackjackWinChecker : IWinner
     {
         /// <summary>
         /// Check if the hand total equals a win condition
@@ -27,13 +27,13 @@ namespace Blackjack {
         /// </summary>
         /// <param name="hand"></param>
         /// <returns>a boolean defining if the value is greater than 21</returns>
-        bool IsTwentyOne(IHand hand)
+        public bool IsTwentyOne(IHand hand)
         {
             if (hand == null)
                 throw new ArgumentNullException();
 
-            int handTotal = hand.GetTotalValue();
-            return hand == 21;
+            int handTotal = hand.GetTotalValue(hand.Cards);
+            return handTotal == 21;
             
         }
     }

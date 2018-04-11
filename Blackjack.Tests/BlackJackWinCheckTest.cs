@@ -3,6 +3,9 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Blackjack;
+using Blackjack.Interfaces;
+using Moq;
+
 
 namespace Blackjack.Tests
 {
@@ -65,6 +68,12 @@ namespace Blackjack.Tests
             //
             // TODO: Add test logic here
             //
+        }
+
+        [TestMethod]
+        public void TestIsTwentyOneMethod()
+        {
+           
         }
     }
 }

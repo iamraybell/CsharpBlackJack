@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackjackWinChecker.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="BlackjackMoveProvider.cs" />
     <Compile Include="ComputerDealer.cs" />
@@ -64,6 +65,8 @@
     <Compile Include="Interfaces\IOutputProvider.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IMessageProvider.cs" />
+    <Compile Include="Interfaces\IPlayerRequest.cs" />
+    <Compile Include="Interfaces\IWinner.cs" />
     <Compile Include="MessageProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
