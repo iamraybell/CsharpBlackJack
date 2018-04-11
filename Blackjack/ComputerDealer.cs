@@ -22,5 +22,35 @@ namespace Blackjack {
         public void Stand() {
             throw new NotImplementedException();
         }
+
+
+
+        /// <summary>
+        /// This method draws cards until the dealers
+        /// hand is greater or equal to 17 and the dealer
+        /// does not bust (over 21).
+        /// </summary>
+        public void DealerDraw(IDeck deck)
+        {
+            const int MAX_VALUE = 21;
+            const int MIN_VALUE = 17;
+
+            //Dealers card value
+            var cardValue = Hand.GetTotalValue(Hand.Cards);
+
+            //Draw cards until the dealers value is below min and not above max
+            while (cardValue < MIN_VALUE && !(cardValue > MAX_VALUE))
+            {
+                //Draw Card
+                Hand.AddCard(deck.Draw());
+
+                //Update Dealers card value
+                cardValue = Hand.GetTotalValue(Hand.Cards);
+            }
+
+        }
+
+
     }
 }
+
