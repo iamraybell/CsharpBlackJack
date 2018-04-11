@@ -14,10 +14,11 @@ namespace Blackjack {
         /// <summary>
         /// Read a line from the console
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A string</returns>
         public string Read() {
             // This function should read a line from the console and return it
-            throw new NotImplementedException();
+            var input = Console.ReadLine();
+            return input;
         }
     }
 }
