@@ -48,6 +48,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardTests.cs" />
+    <Compile Include="ConsoleInputProviderTests.cs" />
+    <Compile Include="ConsoleOutputProviderTests.cs" />
+    <Compile Include="DeckTests.cs" />
+    <Compile Include="GameManagerTests.cs" />
+    <Compile Include="HandTests.cs" />
+    <Compile Include="HumanPlayerTests.cs" />
+    <Compile Include="MessageProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

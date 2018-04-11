@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Interfaces
 {
-    interface IHand
+    public interface IHand
     {
+        List<ICard> Cards { get; set; }
+
+        void AddCard(ICard card);
+
+        int GetTotalValue(List<ICard> hand);
+
+        int CompareTo(IHand other);
+
     }
 }

@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blackjack.Enums
-{
-    public enum GameState
-    {
+namespace Blackjack.Enums {
+    public enum PlayerAction {
+
     }
 }

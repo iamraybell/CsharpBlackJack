@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Blackjack.Enums
-{
-    enum CardValue
-    {
+namespace Blackjack {
+    public class GameManager {
     }
 }

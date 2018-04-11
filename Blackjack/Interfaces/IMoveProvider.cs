@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Blackjack.Enums;
 
-namespace Blackjack.Interfaces
-{
-    interface ISuit
-    {
+namespace Blackjack.Interfaces {
+    public interface IMoveProvider {
+        PlayerAction GetMove();
     }
 }
