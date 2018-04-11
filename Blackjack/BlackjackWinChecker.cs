@@ -20,5 +20,21 @@ namespace Blackjack {
         /// <param name="hand2">The HumanPlayer hand</param>
         /// <returns></returns>
         public bool IsWin(IHand hand1, IHand hand2);
+
+
+        /// <summary>
+        /// takes an IHand method and calls the GetTotalValue method
+        /// </summary>
+        /// <param name="hand"></param>
+        /// <returns>a boolean defining if the value is greater than 21</returns>
+        bool IsTwentyOne(IHand hand)
+        {
+            if (hand == null)
+                throw new ArgumentNullException();
+
+            int handTotal = hand.GetTotalValue();
+            return hand == 21;
+            
+        }
     }
 }

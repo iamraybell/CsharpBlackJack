@@ -30,9 +30,17 @@ namespace Blackjack {
         public int GetTotalValue(List<ICard> hand) {
             int total = 0;
             int aceCount = hand.Where(x => x.Name == CardName.Ace).Count();
+            //Int aceCount = 0;
 
             foreach (ICard card in hand) {
                 total += card.GetIntValue();
+                /*
+                 * Can use a ternary to avoid using a linq statement
+                 * 
+                 * aceCount += hand.Name == CardName.Ace ? 1 : 0;
+                 * 
+                 * :D
+                 * */
             }
 
             while (total > 21 && aceCount > 0) {
