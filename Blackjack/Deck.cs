@@ -31,15 +31,7 @@ namespace Blackjack {
         }
 
         public void Init() {
-            CardSuit[] css = Enum.GetValues(typeof(CardSuit)).Cast<CardSuit>().ToArray();
-            CardName[] cvs = Enum.GetValues(typeof(CardName)).Cast<CardName>().ToArray();
 
-            foreach (CardSuit cs in css) {
-                foreach (CardName cv in cvs) {
-                    Card card = new Card(cs, cv, 1);
-                    Cards.Add(card);
-                }
-            }
         }
 
         public void Shuffle() {

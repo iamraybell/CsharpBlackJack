@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlackJackCardProviderTests.cs" />
     <Compile Include="CardTests.cs" />
     <Compile Include="ConsoleInputProviderTests.cs" />
     <Compile Include="ConsoleOutputProviderTests.cs" />
