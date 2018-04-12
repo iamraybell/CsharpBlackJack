@@ -7,6 +7,8 @@ using Blackjack.Enums;
 
 namespace Blackjack.Interfaces {
     public interface IMoveProvider {
-        PlayerAction GetMove();
+        void SetCurrentplayer(IPlayer Player);
+
+        void InitiateLoop();
     }
 }

@@ -12,6 +12,8 @@ namespace Blackjack
     public class PlayerManager
     {
         public IPlayer Dealer { get; private set; }
+
+
         public List<IPlayer> Players { get; private set; }
 
         public int CurrentPlayerIndex { get; private set; }
@@ -56,11 +58,21 @@ namespace Blackjack
         /// Function that adds a single card to the currentPlayer
         /// </summary>
         /// <param name="card"></param>
-        public void AddCardToPlayerCurrentPlayer(ICard card)
+        public void AddCardToPlayerCurrentPlayer()
         {
+            var card = Deck.Draw();
+
             IPlayer currentPlayer = GetCurrentPlayer();
             currentPlayer.Hand.AddCard(card);
         }
+
+        public void AddCardToPlayerPlayer(IPlayer player)
+        {
+            var card = Deck.Draw();
+
+            player.Hand.AddCard(card);
+        }
+
 
         /// <summary>
         /// Static method that generates and n number of players.

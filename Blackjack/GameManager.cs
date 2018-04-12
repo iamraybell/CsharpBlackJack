@@ -21,9 +21,7 @@ namespace Blackjack {
 
         private ICard card;
 
-        private IDeck deck;
-
-        private List<IPlayer> players;
+        IMoveProvider moveProvider;
         int currentPlayerIndex;
 
         GameState State;
@@ -32,13 +30,13 @@ namespace Blackjack {
 
 
 
-        public GameManager(IDeck deck, IOutputProvider output, IInputProvider input, PlayerManager pm)
+        public GameManager(IOutputProvider output, IInputProvider input, PlayerManager pm, BlackjackMoveProvider moveProvider)
         {
-            this.deck = deck;
 
             iinputProvider = input;
             ioutputProvider = output;
             playerManager = pm;
+            this.moveProvider = moveProvider;
 
             State = GameState.INITIATING_ROUND;
 
@@ -64,30 +62,31 @@ namespace Blackjack {
         {
             if(State == GameState.INITIATING_ROUND)
             {
-                foreach (var player in players)
+                foreach (var player in playerManager.Players)
                 {
-                    ResetHand(player);
+                    player.Hand = new Hand();
+                    playerManager.AddCardToPlayerPlayer(player);
+                    playerManager.AddCardToPlayerPlayer(player);
                 }
                 State = GameState.INITIATING_TURN;
             }
         }
 
-        void ResetHand(IPlayer player)
-        {
-            player.Hand = new Hand();
-            for(int i = 0; i < 2; i++)
-            {
-                var card = deck.Draw();
-                player.Hand.AddCard(card);
-            }
-        }
 
 
+        /// <summary>
+        /// Loops through players and applies 
+        /// </summary>
         void InitiatePlayerTurn()
         {
             if(State == GameState.INITIATING_TURN)
             {
-
+                foreach (var player in playerManager.Players)
+                {
+                    moveProvider.SetCurrentplayer(player);
+                    moveProvider.InitiateLoop();
+                    State = GameState.WIN_CHECKING;
+                }
             }
         }
 
