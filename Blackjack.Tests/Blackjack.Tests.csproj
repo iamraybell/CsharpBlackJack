@@ -64,6 +64,7 @@
     <Compile Include="BlackjackWinCheckerTests.cs" />
     <Compile Include="BlackJackCardProviderTests.cs" />
     <Compile Include="CardTests.cs" />
+    <Compile Include="ComputerDealerTests.cs" />
     <Compile Include="ConsoleInputProviderTests.cs" />
     <Compile Include="ConsoleOutputProviderTests.cs" />
     <Compile Include="DeckTests.cs" />
