@@ -16,12 +16,14 @@ namespace Blackjack
 
         public int CurrentPlayerIndex { get; private set; }
 
-        public PlayerManager(IPlayer dealer, List<IPlayer> players)
+        IDeck Deck;
+
+        public PlayerManager(IPlayer dealer, List<IPlayer> players, IDeck deck)
         {
             Dealer = dealer;
             Players = players;
             CurrentPlayerIndex = 0;
-
+            Deck = deck;
         }
 
         /// <summary>
@@ -77,6 +79,8 @@ namespace Blackjack
             }
             return listOfPlayers;
         }
+
+
         public static List<IPlayer> InitiatePlayer()
         {
             return InitiatePlayer(1);

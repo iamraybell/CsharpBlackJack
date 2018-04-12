@@ -53,9 +53,13 @@ namespace Blackjack {
             while (State != GameState.TERMINATING)
             {
                 InitiateNewRound();
+                InitiatePlayerTurn();
+                CheckForWin();
             }
         }
-
+        /// <summary>
+        /// Resets the players hands to empty hands and deals each player two new cards :D
+        /// </summary>
         void InitiateNewRound()
         {
             if(State == GameState.INITIATING_ROUND)
@@ -79,22 +83,22 @@ namespace Blackjack {
         }
 
 
-        void InitiatPlayerTurn()
+        void InitiatePlayerTurn()
         {
-            if(State == GameState.RUNNING)
+            if(State == GameState.INITIATING_TURN)
             {
 
             }
         }
 
-
-        void InitiateRoundOfDealing()
+        void CheckForWin()
         {
-            if(State == GameState.DEALING)
+            if(State == GameState.WIN_CHECKING)
             {
 
             }
         }
+
 
 
 
