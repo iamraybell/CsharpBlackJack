@@ -18,6 +18,7 @@ namespace Blackjack {
         /// </summary>
         public WinState WinState { get; private set; }
 
+
         /// <summary>
         /// Check if the hand total equals a win condition
         /// </summary>
@@ -35,6 +36,21 @@ namespace Blackjack {
                 WinState = WinState.lose;
 
             return WinState;
+        }
+
+        /// <summary>
+        /// takes an IHand method and calls the GetTotalValue method
+        /// </summary>
+        /// <param name="hand"></param>
+        /// <returns>a boolean defining if the value is greater than 21</returns>
+        public bool IsTwentyOne(IHand hand)
+        {
+            if (hand == null)
+                throw new ArgumentNullException();
+
+            int handTotal = hand.GetTotalValue(hand.Cards);
+            return handTotal == 21;
+
         }
     }
 }
