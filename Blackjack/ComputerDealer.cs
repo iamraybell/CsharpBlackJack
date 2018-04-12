@@ -7,7 +7,7 @@ using Blackjack.Enums;
 using Blackjack.Interfaces;
 
 namespace Blackjack {
-    class ComputerDealer : IPlayer {
+    public class ComputerDealer : IPlayer {
         public IHand Hand { get; set; }
         public string Name { get; set; }
 
@@ -30,7 +30,7 @@ namespace Blackjack {
         /// hand is greater or equal to 17 and the dealer
         /// does not bust (over 21).
         /// </summary>
-        public void DealerDraw(IDeck deck)
+        public int DealerDraw(IDeck deck)
         {
             const int MAX_VALUE = 21;
             const int MIN_VALUE = 17;
@@ -41,13 +41,15 @@ namespace Blackjack {
             //Draw cards until the dealers value is below min and not above max
             while (cardValue < MIN_VALUE && !(cardValue > MAX_VALUE))
             {
+                var newCard = deck.Draw();
+
                 //Draw Card
-                Hand.AddCard(deck.Draw());
+                Hand.AddCard(newCard);
 
                 //Update Dealers card value
                 cardValue = Hand.GetTotalValue(Hand.Cards);
             }
-
+            return cardValue;
         }
 
 

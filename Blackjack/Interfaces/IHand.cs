@@ -15,6 +15,5 @@ namespace Blackjack.Interfaces
         int GetTotalValue(List<ICard> hand);
 
         int CompareTo(IHand other);
-
     }
 }
