@@ -24,7 +24,7 @@ namespace Blackjack.Tests
         [TestMethod]
         public void TestGetValuesReturnsWhenNotNumber()
         {
-            int expectedValue = 10;
+            int expectedValue = 11;
             var BJCardProvider = new BlackJackCardProvider();
             int returnValue = BJCardProvider.GetValue(CardName.Ace);
 

@@ -40,6 +40,8 @@ namespace Blackjack
             if (results)
             {
                 return value;
+            } else if (name == CardName.Ace) {
+                return 11;
             }
             return 10;
         }

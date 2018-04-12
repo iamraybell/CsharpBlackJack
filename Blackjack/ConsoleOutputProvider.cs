@@ -43,7 +43,7 @@ namespace Blackjack {
         public void Clear()
         {
             // This function should clear the output
-            throw new NotImplementedException();
+            Console.Clear();
         }
     }
 }

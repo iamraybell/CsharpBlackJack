@@ -6,5 +6,9 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Enums {
     public enum PlayerAction {
+        Hit,
+        Stand,
+        Quit,
+        DealerMove
     }
 }

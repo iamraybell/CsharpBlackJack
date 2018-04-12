@@ -10,5 +10,12 @@ namespace Blackjack.Interfaces {
         void SetCurrentPlayer(IPlayer Player);
 
         void InitiateLoop();
+
+
+        // --------------------------------------
+        // ALT INTERFACE
+        // --------------------------------------
+
+        PlayerAction GetAction();
     }
 }

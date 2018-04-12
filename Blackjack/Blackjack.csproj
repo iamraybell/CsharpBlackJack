@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AltBlackjackMoveProvider.cs" />
+    <Compile Include="AltGameManager.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="BlackjackWinChecker.cs" />
     <Compile Include="Card.cs" />
@@ -72,12 +74,24 @@
     <Compile Include="Interfaces\IMessageProvider.cs" />
     <Compile Include="Interfaces\IWinner.cs" />
     <Compile Include="MessageProvider.cs" />
+    <Compile Include="MyAudioPlayer.cs" />
     <Compile Include="PlayerManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="audio\cb.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="audio\itsTime.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="audio\useless.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

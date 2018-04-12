@@ -35,10 +35,10 @@ namespace Blackjack {
             Cards.Clear();
             Shuffler.Clear();
             Cards = cardProvider.GetCards().ToList();
-            Shuffle();
         }
 
         public void Shuffle() {
+            Init();
             MoveCardsToShuffler();
 
             int cardsInDeck = Shuffler.Count;

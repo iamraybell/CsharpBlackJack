@@ -128,6 +128,8 @@ namespace Blackjack {
             operation();
         }
 
-  
+        public PlayerAction GetAction() {
+            throw new NotImplementedException();
+        }
     }   
 }

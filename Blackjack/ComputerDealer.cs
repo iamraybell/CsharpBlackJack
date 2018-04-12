@@ -11,16 +11,18 @@ namespace Blackjack {
         public IHand Hand { get; set; }
         public string Name { get; set; }
 
-        public bool StillInPlay { get; private set; }
+        public bool StillInPlay { get; set; }
         public ComputerDealer()
         {
             StillInPlay = true;
+            Hand = new Hand();
+            Name = "Dealer";
         }
 
 
 
         public PlayerAction GetAction() {
-            throw new NotImplementedException();
+            return PlayerAction.DealerMove;
         }
 
         public void Hit() {
@@ -60,7 +62,21 @@ namespace Blackjack {
             return cardValue;
         }
 
+        public int GetBet() {
+            throw new NotImplementedException();
+        }
 
+        public void InvokeSpecialAction(IDeck deck) {
+            DealerDraw(deck);
+        }
+
+        public void AddCard(ICard card) {
+            Hand.AddCard(card);
+        }
+
+        public void ClearHand() {
+            Hand.Cards = new List<ICard>();
+        }
     }
 }
 

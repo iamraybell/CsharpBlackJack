@@ -12,12 +12,19 @@ namespace Blackjack.Interfaces
         String Name { get; set; }
         IHand Hand { get; set; }
 
-        bool StillInPlay { get; }
+        bool StillInPlay { get; set; }
 
         PlayerAction GetAction();
+
+        int GetBet();
 
         void Hit();
 
         void Stand();
+
+        void InvokeSpecialAction(IDeck deck);
+
+        void AddCard(ICard card);
+        void ClearHand();
     }
 }

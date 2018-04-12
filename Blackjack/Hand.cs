@@ -72,5 +72,16 @@ namespace Blackjack {
 
             return myHand - otherHand;
         }
+
+        public override string ToString() {
+            StringBuilder sb = new StringBuilder("");
+
+            foreach (ICard c in Cards) {
+                sb.Append(c.ToString());
+                sb.Append(" ");
+            }
+
+            return sb.ToString();
+        }
     }
 }

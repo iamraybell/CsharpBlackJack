@@ -13,6 +13,7 @@ namespace Blackjack.Enums
         INITIATING_ROUND,
         INITIATING_TURN,
         WIN_CHECKING,
-        TERMINATING
+        TERMINATING,
+        QUITGAME
     }
 }
