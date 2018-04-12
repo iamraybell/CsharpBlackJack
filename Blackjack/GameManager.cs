@@ -13,27 +13,22 @@ namespace Blackjack {
         /// <summary>
         /// 
         /// </summary>
-        private IInputProvider iinputProvider;
 
         private IOutputProvider ioutputProvider;
 
         private PlayerManager playerManager;
 
-        private ICard card;
 
         IMoveProvider moveProvider;
-        int currentPlayerIndex;
 
         GameState State;
 
-        IPlayer dealer;
 
 
 
-        public GameManager(IOutputProvider output, IInputProvider input, PlayerManager pm, BlackjackMoveProvider moveProvider)
+        public GameManager(IOutputProvider output, PlayerManager pm, BlackjackMoveProvider moveProvider)
         {
 
-            iinputProvider = input;
             ioutputProvider = output;
             playerManager = pm;
             this.moveProvider = moveProvider;
@@ -101,32 +96,19 @@ namespace Blackjack {
 
 
 
-        public void AssignInitialCardsToPlayer()
-        {
-            players[0].Hand.Cards.Add(deck.Draw());
-            players[0].Hand.Cards.Add(deck.Draw());
-        } 
-
-
-        public void AssignInitialCardsToDealer()
-        {
-            players[1].Hand.Cards.Add(deck.Draw());
-            players[1].Hand.Cards.Add(deck.Draw());
-        }
-
         /// <summary>
         /// After typing Deal, HumanPlayer is assigned 2 cards which are displayed along with their total on the screen
         /// </summary>
         public void TypeDealAndShowCards()
         {
-            ioutputProvider.WriteLine("Type Deal to have cards dealt");
-            iinputProvider.Read();
+            //ioutputProvider.WriteLine("Type Deal to have cards dealt");
+            //iinputProvider.Read();
 
-            AssignInitialCardsToPlayer();
-            AssignInitialCardsToDealer();
+            //AssignInitialCardsToPlayer();
+            //AssignInitialCardsToDealer();
 
-            ioutputProvider.WriteLine($"Dealer: [{players[1].Hand.Cards[0].GetIntValue()}] [{players[1].Hand.Cards[1].GetIntValue()}]");
-            ioutputProvider.WriteLine($"{players[0].Name}: [{players[0].Hand.Cards[0].GetIntValue()}] [{players[0].Hand.Cards[1].GetIntValue()}] - {players[0].Hand.GetTotalValue(players[0].Hand.Cards)}");
+            //ioutputProvider.WriteLine($"Dealer: [{players[1].Hand.Cards[0].GetIntValue()}] [{players[1].Hand.Cards[1].GetIntValue()}]");
+            //ioutputProvider.WriteLine($"{players[0].Name}: [{players[0].Hand.Cards[0].GetIntValue()}] [{players[0].Hand.Cards[1].GetIntValue()}] - {players[0].Hand.GetTotalValue(players[0].Hand.Cards)}");
 
         }
 
