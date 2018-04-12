@@ -10,6 +10,7 @@ namespace Blackjack {
     class HumanPlayer : IPlayer {
         public IHand Hand { get; set; }
         public string Name { get; set; }
+        public bool StillInPlay { get; set; }
 
         public PlayerAction GetAction() {
             throw new NotImplementedException();

@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Blackjack.Enums
 {
-    public enum GameState
+    enum MoveProviderState
     {
-        RUNNING,
-        DEALING,
-        INITIATING_ROUND,
-        INITIATING_TURN,
-        WIN_CHECKING,
-        TERMINATING
+        WAITING,
+        PLAYING,
+        ENDING_TURN,
+        ERROR
     }
 }
