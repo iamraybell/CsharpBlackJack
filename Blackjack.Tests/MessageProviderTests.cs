@@ -85,7 +85,7 @@ namespace Blackjack.Tests
             // act
             MessageProvider messageProvider = new MessageProvider(welcome, rulesInstanceData);
             Console.SetOut(stringWriter);
-            messageProvider.printRules();
+            messageProvider.printRules(rules);
 
             // assert
             Assert.AreEqual(rules + "\r\n", stringWriter.ToString());
