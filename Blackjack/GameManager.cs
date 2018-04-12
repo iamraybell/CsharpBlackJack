@@ -78,7 +78,7 @@ namespace Blackjack {
             {
                 foreach (var player in playerManager.Players)
                 {
-                    moveProvider.SetCurrentplayer(player);
+                    moveProvider.SetCurrentPlayer(player);
                     moveProvider.InitiateLoop();
                     State = GameState.WIN_CHECKING;
                 }

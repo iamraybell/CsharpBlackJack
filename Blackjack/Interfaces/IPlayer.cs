@@ -12,7 +12,7 @@ namespace Blackjack.Interfaces
         String Name { get; set; }
         IHand Hand { get; set; }
 
-        bool StillInPlay { get; set; }
+        bool StillInPlay { get; }
 
         PlayerAction GetAction();
 

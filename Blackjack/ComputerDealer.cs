@@ -11,6 +11,14 @@ namespace Blackjack {
         public IHand Hand { get; set; }
         public string Name { get; set; }
 
+        public bool StillInPlay { get; private set; }
+        public ComputerDealer()
+        {
+            StillInPlay = true;
+        }
+
+
+
         public PlayerAction GetAction() {
             throw new NotImplementedException();
         }
