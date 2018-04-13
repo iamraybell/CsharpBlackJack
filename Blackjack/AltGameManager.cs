@@ -17,6 +17,9 @@ namespace Blackjack {
         private IPlayer dealer { get; set; }
         private IPlayer currentPlayer { get; set; }
         public GameState GameState { get; private set; }
+        private int PlayerBet { get; set; }
+
+        const int boardTop = 5;
 
         public AltGameManager(IInputProvider inputProvider, IOutputProvider outputProvider, IWinner winChecker, IDeck deck) {
             this.inputProvider = inputProvider;
@@ -44,6 +47,7 @@ namespace Blackjack {
 
             // Game Loop
             while (GameState != GameState.QUITGAME) {
+
                 SetupRound();
 
 
@@ -61,11 +65,16 @@ namespace Blackjack {
             // Closing phase
         }
 
+        public void GetPlayerBet(IPlayer cPlayer) {
+            outputProvider.WriteLine("\nHow much will you bet? (Invalid entries with be counted as $0. You can play for fun)");
+            PlayerBet = cPlayer.GetBet(inputProvider);
+        }
+
         public void EndRoundPhase() {
             WinState ws = winChecker.IsWin(dealer.Hand, players[0].Hand);
             dealer.Hand.Cards.ForEach(x => x.IsHidden = false);
 
-            Console.SetCursorPosition(0, 3);
+            Console.SetCursorPosition(0, boardTop);
             PrintEndTableState();
             outputProvider.WriteLine();
 
@@ -88,6 +97,7 @@ namespace Blackjack {
         }
 
         private void PlayerWon() {
+            players[0].bank.Deposit((int) (PlayerBet * 1.5));
             outputProvider.WriteLine(MessageProvider.M_PlayerWon);
         }
 
@@ -97,6 +107,7 @@ namespace Blackjack {
         }
 
         private void PlayerDraw() {
+            players[0].bank.Deposit(PlayerBet);
             outputProvider.WriteLine(MessageProvider.M_PlayerDraw);
 
         }
@@ -104,13 +115,24 @@ namespace Blackjack {
         public void PerformSingleTurn(IPlayer cPlayer) {
             PlayerAction pa = PlayerAction.Stand;
 
+
+            Console.SetCursorPosition(0, boardTop);
+            PrintTableState();
+
+
+            if (cPlayer.IsHuman) {
+                GetPlayerBet(cPlayer);
+            }
+
             do {
-                Console.SetCursorPosition(0, 3);
+                Console.SetCursorPosition(0, boardTop - 2);
+                outputProvider.WriteLine(players[0].Name + "'s bank: " + players[0].bank.Balance.ToString());
+                Console.SetCursorPosition(0, boardTop);
                 PrintTableState();
                 if (cPlayer.StillInPlay) {
                     outputProvider.WriteLine("\n" + cPlayer.Name + MessageProvider.M_PlayerActionPrompt);
                     outputProvider.WriteLine("\t\t\t\t\t\t.");
-                    Console.SetCursorPosition(0, 7);
+                    Console.SetCursorPosition(0, boardTop + 5);
                     pa = cPlayer.GetAction();
                     DoAction(cPlayer, pa);
                 } else {
@@ -164,6 +186,8 @@ namespace Blackjack {
         private void SetupRound() {
             outputProvider.Clear();
             outputProvider.WriteLine(MessageProvider.M_RulesMessage);
+            Console.SetCursorPosition(0, boardTop - 2);
+            outputProvider.WriteLine(players[0].Name + "'s bank: " + players[0].bank.Balance.ToString());
 
             deck.Shuffle();
 

@@ -13,7 +13,7 @@ namespace Blackjack
         public static string M_RulesMessage = "**\tBlackjack plays 3 to 2.\n\tDealer draws to 16, must stand on 17.  **";
         public static string M_PromptPlayerName = "Please enter a player name: ";
         public static string M_BetPrompt = "Make your best bet! :";
-        public static string M_PlayerActionPrompt = " Do you want to 'Hit' or 'Stand'? :";
+        public static string M_PlayerActionPrompt = " Do you want to 'Hit' or 'Stand'? :\t\t\t\t\t\t\t\t";
         public static string M_BankString = "Bank";
         public static string M_PlayerWon = "!!!!!!!!!!!!!!!!!!!\tYOU WON\t!!!!!!!!!!!!!!!!!!!!!";
         public static string M_PlayerLost = "....................\tyou lost\t....................";

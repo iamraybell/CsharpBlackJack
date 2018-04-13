@@ -12,9 +12,13 @@ namespace Blackjack {
         public string Name { get; set; }
 
         public bool StillInPlay { get; set; }
+        public Bank bank { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsHuman { get; set; }
+
         public ComputerDealer()
         {
             StillInPlay = true;
+            IsHuman = false;
             Hand = new Hand();
             Name = "Dealer";
         }
@@ -61,10 +65,7 @@ namespace Blackjack {
             }
             return cardValue;
         }
-
-        public int GetBet() {
-            throw new NotImplementedException();
-        }
+        
 
         public void InvokeSpecialAction(IDeck deck) {
             DealerDraw(deck);
@@ -76,6 +77,10 @@ namespace Blackjack {
 
         public void ClearHand() {
             Hand.Cards = new List<ICard>();
+        }
+
+        public int GetBet(IInputProvider ip) {
+            throw new NotImplementedException();
         }
     }
 }

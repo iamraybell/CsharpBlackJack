@@ -11,12 +11,14 @@ namespace Blackjack.Interfaces
     {
         String Name { get; set; }
         IHand Hand { get; set; }
+        Bank bank { get; set; }
+        bool IsHuman { get; set; }
 
         bool StillInPlay { get; set; }
 
         PlayerAction GetAction();
 
-        int GetBet();
+        int GetBet(IInputProvider ip);
 
         void Hit();
 
