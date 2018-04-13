@@ -130,12 +130,20 @@ namespace Blackjack {
 
             do {
                 Console.SetCursorPosition(0, boardTop - 2);
-                outputProvider.WriteLine(players[0].Name + "'s bank: " + players[0].bank.Balance.ToString());
+                outputProvider.WriteLine(players[0].Name + "'s bank: \t\t\t\t\t\t\t\t.");
+
+                Console.SetCursorPosition(15, 3);
+                outputProvider.WriteLine(players[0].bank.Balance.ToString());
+
                 Console.SetCursorPosition(0, boardTop);
                 PrintTableState();
                 if (cPlayer.StillInPlay) {
                     Console.SetCursorPosition(0, boardTop + promptLine + 1);
-                    outputProvider.WriteLine(cPlayer.Name + MessageProvider.M_PlayerActionPrompt);
+                    if (cPlayer.IsHuman) {
+                        outputProvider.WriteLine(cPlayer.Name + MessageProvider.M_PlayerActionPrompt);
+                    } else {
+                        outputProvider.WriteLine("--------------------------------------------------------------------------------------------------------------------------\t\t\t\t\t");
+                    }
                     outputProvider.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.");
 
                     Console.SetCursorPosition(0, boardTop + promptLine + 2);
@@ -232,10 +240,13 @@ namespace Blackjack {
             PlayerBet = 0;
             outputProvider.Clear();
             outputProvider.WriteLine(MessageProvider.M_RulesMessage);
+            //Console.SetCursorPosition(0, boardTop - 2);
+            //outputProvider.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.SetCursorPosition(0, boardTop - 2);
-            outputProvider.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t");
-            Console.SetCursorPosition(0, boardTop - 2);
-            outputProvider.WriteLine(players[0].Name + "'s bank: " + players[0].bank.Balance.ToString());
+            outputProvider.WriteLine(players[0].Name + "'s bank: \t\t\t\t\t\t\t\t.");
+
+            Console.SetCursorPosition(15, 3);
+            outputProvider.WriteLine(players[0].bank.Balance.ToString());
 
             deck.Shuffle();
 
