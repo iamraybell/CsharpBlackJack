@@ -65,8 +65,8 @@ namespace Blackjack {
             // Closing phase
         }
 
-        public void GetPlayerBet(IPlayer cPlayer) {
-            outputProvider.WriteLine("\nHow much will you bet? (Invalid entries with be counted as $0. You can play for fun)");
+        public void GetPlayerBet(IPlayer cPlayer) {        
+            outputProvider.WriteLine("\nHow much will you bet? (Invalid entries will be counted as $0. You can play for fun)");
             PlayerBet = cPlayer.GetBet(inputProvider);
         }
 
@@ -77,6 +77,8 @@ namespace Blackjack {
             Console.SetCursorPosition(0, boardTop);
             PrintEndTableState();
             outputProvider.WriteLine();
+
+            Console.SetCursorPosition(0, boardTop + promptLine + 3);
 
             switch (ws) {
                 case WinState.win:
@@ -103,7 +105,6 @@ namespace Blackjack {
 
         private void PlayerLost() {
             outputProvider.WriteLine(MessageProvider.M_PlayerLost);
-            MyAudioPlayer.playHumanPlayerBust();
         }
 
         private void PlayerDraw() {
@@ -111,6 +112,8 @@ namespace Blackjack {
             outputProvider.WriteLine(MessageProvider.M_PlayerDraw);
 
         }
+
+        int promptLine = 12;
 
         public void PerformSingleTurn(IPlayer cPlayer) {
             PlayerAction pa = PlayerAction.Stand;
@@ -121,6 +124,7 @@ namespace Blackjack {
 
 
             if (cPlayer.IsHuman) {
+                Console.SetCursorPosition(0, boardTop + promptLine);
                 GetPlayerBet(cPlayer);
             }
 
@@ -130,9 +134,12 @@ namespace Blackjack {
                 Console.SetCursorPosition(0, boardTop);
                 PrintTableState();
                 if (cPlayer.StillInPlay) {
-                    outputProvider.WriteLine("\n" + cPlayer.Name + MessageProvider.M_PlayerActionPrompt);
-                    outputProvider.WriteLine("\t\t\t\t\t\t.");
-                    Console.SetCursorPosition(0, boardTop + 5);
+                    Console.SetCursorPosition(0, boardTop + promptLine + 1);
+                    outputProvider.WriteLine(cPlayer.Name + MessageProvider.M_PlayerActionPrompt);
+                    outputProvider.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.");
+
+                    Console.SetCursorPosition(0, boardTop + promptLine + 2);
+
                     pa = cPlayer.GetAction();
                     DoAction(cPlayer, pa);
                 } else {
@@ -164,28 +171,69 @@ namespace Blackjack {
         }
 
         private void QuitApplication() {
+            MyAudioPlayer.playSeeYou();
+            outputProvider.Clear();
 
+            outputProvider.Write(MessageProvider.M_QuitMessage);
+            Console.ReadKey();
+            Environment.Exit(0);
         }
 
         public void PrintEndTableState() {
-            outputProvider.WriteLine(dealer.Name + ": " + dealer.Hand.ToString() + " - " + dealer.Hand.GetTotalValue(dealer.Hand.Cards));
+            outputProvider.WriteLine(dealer.Name + " - " + dealer.Hand.GetTotalValue(dealer.Hand.Cards));
+            PrintEmptyCards(dealer.Hand.Cards, boardTop + 1);
 
             foreach (IPlayer p in players) {
-                outputProvider.WriteLine(p.Name + ": " + p.Hand.ToString() + " - " + p.Hand.GetTotalValue(p.Hand.Cards));
+
+                Console.SetCursorPosition(0, boardTop + 6);
+                outputProvider.WriteLine(p.Name + " - " + p.Hand.GetTotalValue(p.Hand.Cards));
+                PrintEmptyCards(p.Hand.Cards, boardTop + 7);
             }
         }
 
         public void PrintTableState() {
-            outputProvider.WriteLine(dealer.Name + ": " + dealer.Hand.ToString());
+            outputProvider.WriteLine(dealer.Name);
+            PrintEmptyCards(dealer.Hand.Cards, boardTop + 1);
             
             foreach (IPlayer p in players) {
-                outputProvider.WriteLine(p.Name + ": " + p.Hand.ToString() + " - " + p.Hand.GetTotalValue(p.Hand.Cards));
+
+                Console.SetCursorPosition(0, boardTop + 6);
+                outputProvider.WriteLine(p.Name + " - " + p.Hand.GetTotalValue(p.Hand.Cards));
+                PrintEmptyCards(p.Hand.Cards, boardTop + 7);
+            }
+        }
+
+        private void PrintEmptyCards(List<ICard> cs, int top) {
+            StringBuilder sb = new StringBuilder("");
+
+            string[] arr = new string[] { "┌─────┐", "|     |", "|     |", "|     |", "└─────┘" };
+
+
+            foreach (string str in arr) {
+                for (int i = 0; i < cs.Count; i++) {
+                    sb.Append(str + " ");
+
+                }
+                sb.Append("\t\t\t\t\t\t\t\t\t\t\t\n");
+            }
+
+            Console.SetCursorPosition(0, top);
+            outputProvider.WriteLine(sb.ToString());
+
+            int cardPrintWidth = 8;
+
+            for (int i = 0; i < cs.Count; i++) {
+                Console.SetCursorPosition((cardPrintWidth * i) + 2, top + 1);
+                outputProvider.Write(cs[i].ToString());
             }
         }
 
         private void SetupRound() {
+            PlayerBet = 0;
             outputProvider.Clear();
             outputProvider.WriteLine(MessageProvider.M_RulesMessage);
+            Console.SetCursorPosition(0, boardTop - 2);
+            outputProvider.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t");
             Console.SetCursorPosition(0, boardTop - 2);
             outputProvider.WriteLine(players[0].Name + "'s bank: " + players[0].bank.Balance.ToString());
 
@@ -216,7 +264,6 @@ namespace Blackjack {
             GetCreatePlayers();
 
             dealer = new ComputerDealer();
-            MyAudioPlayer.playStartGame();
         }
 
         private void GetCreatePlayers() {

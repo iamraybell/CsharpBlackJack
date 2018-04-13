@@ -9,15 +9,82 @@ namespace Blackjack
 {
     public class MessageProvider : IMessageProvider
     {
-        public static string M_WelcomeMessage = "Welcome to Blackjack!";
-        public static string M_RulesMessage = "**\tBlackjack plays 3 to 2.\n\tDealer draws to 16, must stand on 17.  **";
+        public static string M_WelcomeMessage = @"Welcome to...
+
+              __                                               
+        _..-''--'----_.                                        
+      ,''.-''| .---/ _`-._                                     
+    ,' \ \  ;| | ,/ / `-._`-.                     ___  __         __     _          __                  
+  ,' ,',\ \( | |// /,-._  / /                    / _ )/ /__ _____/ /__  (_)__ _____/ /__                
+  ;.`. `,\ \`| |/ / |   )/ /                    / _  / / _ `/ __/  '_/ / / _ `/ __/  '_/                
+ / /`_`.\_\ \| /_.-.'-''/ /                    /____/_/\_,_/\__/_/\_\_/ /\_,_/\__/_/\_\                 
+/ /_|_:.`. \ |;'`..')  / /                                         |___/                                
+`-._`-._`.`.;`.\  ,'  / /                                      
+    `-._`.`/    ,'-._/ /                                       
+      : `-/     \`-.._/                                        
+      |  :      ;._ (                                          
+      :  |      \  ` \                                         
+       \         \   |                                         
+        :        :   ;                                         
+        |           /                                          
+        ;         ,'                                           
+       /         /                                             
+      /         /                                              
+               /             Credit for the hand art - Chris Ferguson (found on Google)   
+
+";
+        public static string M_RulesMessage = 
+@"****  Blackjack pays 3 to 2.                 ****
+****  Dealer draws to 16, must stand on 17.  ****";
         public static string M_PromptPlayerName = "Please enter a player name: ";
         public static string M_BetPrompt = "Make your best bet! :";
         public static string M_PlayerActionPrompt = " Do you want to 'Hit' or 'Stand'? :\t\t\t\t\t\t\t\t";
         public static string M_BankString = "Bank";
-        public static string M_PlayerWon = "!!!!!!!!!!!!!!!!!!!\tYOU WON\t!!!!!!!!!!!!!!!!!!!!!";
-        public static string M_PlayerLost = "....................\tyou lost\t....................";
-        public static string M_PlayerDraw = "--------------------\tYou Tied\t---------------------";
+        public static string M_PlayerWon = @"
+
+   #                                                                                                                            
+  # #   #    #  ####  ##### #    # ###### #####     #    # # #    #           #####  ####   ####     ######   ##    ####  #   # 
+ #   #  ##   # #    #   #   #    # #      #    #    #    # # ##   #             #   #    # #    #    #       #  #  #       # #  
+#     # # #  # #    #   #   ###### #####  #    #    #    # # # #  #             #   #    # #    #    #####  #    #  ####    #   
+####### #  # # #    #   #   #    # #      #####     # ## # # #  # #             #   #    # #    #    #      ######      #   #   
+#     # #   ## #    #   #   #    # #      #   #     ##  ## # #   ##    ###      #   #    # #    #    #      #    # #    #   #   
+#     # #    #  ####    #   #    # ###### #    #    #    # # #    #    ###      #    ####   ####     ###### #    #  ####    #  
+                                                                        #
+                                                                       #
+";
+        public static string M_PlayerLost = @"
+
+###                         ###                                                         ###                                           
+ #      ####    ##   #    # ### #####    #####  ###### #      # ###### #    # ######     #     #       ####   ####  #####             
+ #     #    #  #  #  ##   #  #    #      #    # #      #      # #      #    # #          #     #      #    # #        #               
+ #     #      #    # # #  # #     #      #####  #####  #      # #####  #    # #####      #     #      #    #  ####    #               
+ #     #      ###### #  # #       #      #    # #      #      # #      #    # #          #     #      #    #      #   #    
+ #     #    # #    # #   ##       #      #    # #      #      # #       #  #  #          #     #      #    # #    #   #   ### ### ### 
+###     ####  #    # #    #       #      #####  ###### ###### # ######   ##   ######    ###    ######  ####   ####    #   ### ### ### 
+
+
+";
+        public static string M_PlayerDraw = @"
+
+
+
+                                           A Draw is okay, that's okay.
+
+
+";
+        public static string M_QuitMessage = @"
+
+   _____              __  __               _____                          ______              __                   
+  / ___/___  ___      \ \/ /___  __  __   / ___/____  ____ _________     / ____/___ _      __/ /_  ____  __  __    
+  \__ \/ _ \/ _ \      \  / __ \/ / / /   \__ \/ __ \/ __ `/ ___/ _ \   / /   / __ \ | /| / / __ \/ __ \/ / / /    
+ ___/ /  __/  __/      / / /_/ / /_/ /   ___/ / /_/ / /_/ / /__/  __/  / /___/ /_/ / |/ |/ / /_/ / /_/ / /_/ /   
+/____/\___/\___/      /_/\____/\__,_/   /____/ .___/\__,_/\___/\___/   \____/\____/|__/|__/_.___/\____/\__, / (_) (_) (_)
+                                            /_/                                                       /____/       
+
+
+
+
+";
 
         /// <summary>
         /// A welcome message

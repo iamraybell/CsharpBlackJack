@@ -24,5 +24,11 @@ namespace Blackjack {
             sp.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + @"\audio\itsTime.wav";
             sp.Play();
         }
+
+        public static void playSeeYou() {
+            SoundPlayer sp = new SoundPlayer();
+            sp.SoundLocation = AppDomain.CurrentDomain.BaseDirectory + @"\audio\seeyou.wav";
+            sp.Play();
+        }
     }
 }
