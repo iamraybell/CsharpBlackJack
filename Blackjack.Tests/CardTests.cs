@@ -5,8 +5,25 @@ using Blackjack.Enums;
 using System.Collections.Generic;
 
 namespace Blackjack.Tests {
+
     [TestClass]
     public class CardTests {
+        
+        [TestMethod]
+        public void KingIsTen()
+        {
+            Assert.AreEqual(10, Card.Create(CardName.King, CardSuit.Hearts).Value);
+        }
+
+        [TestMethod]
+        public void KingPlusTenIs20()
+        {
+            int value = CardAccumulator.Calculate(
+                Card.Create(CardName.King, CardSuit.Hearts),
+                Card.Create(CardName.Ten, CardSuit.Hearts));
+            Assert.AreEqual(20, value);
+        }
+
         [TestMethod]
         public void TestCard() {
             // arrange

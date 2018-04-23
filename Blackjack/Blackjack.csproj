@@ -42,12 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AltBlackjackMoveProvider.cs" />
-    <Compile Include="AltGameManager.cs" />
-    <Compile Include="Bank.cs" />
-    <Compile Include="BlackjackWinChecker.cs" />
-    <Compile Include="Card.cs" />
     <Compile Include="BlackjackMoveProvider.cs" />
+    <Compile Include="GameApp.cs" />
+    <Compile Include="Bank.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="ComputerDealer.cs" />
     <Compile Include="ConsoleInputProvider.cs" />
     <Compile Include="ConsoleOutputProvider.cs" />
@@ -59,12 +57,9 @@
     <Compile Include="Enums\GameState.cs" />
     <Compile Include="Enums\WinState.cs" />
     <Compile Include="Exceptions\InvalidInputException.cs" />
-    <Compile Include="GameManager.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="HumanPlayer.cs" />
-    <Compile Include="BlackJackCardProvider.cs" />
     <Compile Include="Interfaces\ICard.cs" />
-    <Compile Include="Interfaces\ICardProvider.cs" />
     <Compile Include="Interfaces\IHand.cs" />
     <Compile Include="Interfaces\IInputProvider.cs" />
     <Compile Include="Interfaces\IDeck.cs" />
@@ -72,7 +67,6 @@
     <Compile Include="Interfaces\IOutputProvider.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IMessageProvider.cs" />
-    <Compile Include="Interfaces\IWinner.cs" />
     <Compile Include="MessageProvider.cs" />
     <Compile Include="MyAudioPlayer.cs" />
     <Compile Include="PlayerManager.cs" />

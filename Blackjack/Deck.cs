@@ -11,15 +11,51 @@ namespace Blackjack {
         public List<ICard> Cards { get; set; }
         private List<ICard> Shuffler { get; set; }
 
-        private ICardProvider cardProvider { get; set; }
+       
 
-        public Deck (ICardProvider cardProvider) {
+        public Deck () {
             Cards = new List<ICard>();
             Shuffler = new List<ICard>();
-            this.cardProvider = cardProvider;
+           
             Init();
         }
+        public IEnumerable<ICard> GetCards()
+        {
+            List<ICard> listOfCardsToReturn = new List<ICard>();
+            CardSuit[] suits = Enum.GetValues(typeof(CardSuit)).Cast<CardSuit>().ToArray();
+            CardName[] names = Enum.GetValues(typeof(CardName)).Cast<CardName>().ToArray();
 
+            foreach (CardSuit suit in suits)
+            {
+                foreach (CardName name in names)
+                {
+                    int valueOfName = GetValue(name);
+                    Card cardToAddtoList = new Card(suit, name, valueOfName);
+                    listOfCardsToReturn.Add(cardToAddtoList);
+                }
+            }
+
+            return listOfCardsToReturn;
+        }
+
+
+
+        public int GetValue(CardName name)
+        {
+            string nameToString = name.GetString();
+            int value;
+            bool results = int.TryParse(nameToString, out value);
+
+            if (results)
+            {
+                return value;
+            }
+            else if (name == CardName.Ace)
+            {
+                return 11;
+            }
+            return 10;
+        }
         public ICard Draw() {
             if (Cards.Count == 0)
                 throw new Exception();
@@ -34,7 +70,7 @@ namespace Blackjack {
         public void Init() {
             Cards.Clear();
             Shuffler.Clear();
-            Cards = cardProvider.GetCards().ToList();
+            Cards = GetCards().ToList();
         }
 
         public void Shuffle() {

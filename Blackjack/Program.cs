@@ -17,11 +17,8 @@ namespace Blackjack
              Console.ReadLine();
              var testBJCP = new BlackJackCardProvider();
              testBJCP.GetValue(CardName.Eight);*/
-
-
-            AltGameManager agm = new AltGameManager(new ConsoleInputProvider(), new ConsoleOutputProvider(), new BlackjackWinChecker(), new Deck(new BlackJackCardProvider()));
+            GameApp agm = new GameApp(new ConsoleInputProvider(), new ConsoleOutputProvider(),  new Deck());
             agm.StartGame();
-
         }
     }
 }

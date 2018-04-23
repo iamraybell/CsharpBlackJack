@@ -7,11 +7,16 @@ using Blackjack.Interfaces;
 using Blackjack.Enums;
 
 namespace Blackjack {
-    public class AltGameManager {
+    public class GameApp {
+
+        /// <summary>
+        /// Stores the Win State for the human player
+        /// </summary>
+        public WinState WinState { get; private set; }
+
 
         private IInputProvider inputProvider { get; set; }
         private IOutputProvider outputProvider { get; set; }
-        private IWinner winChecker { get; set; }
         private IDeck deck { get; set; }
         private List<IPlayer> players { get; set; }
         private IPlayer dealer { get; set; }
@@ -21,16 +26,59 @@ namespace Blackjack {
 
         const int boardTop = 5;
 
-        public AltGameManager(IInputProvider inputProvider, IOutputProvider outputProvider, IWinner winChecker, IDeck deck) {
+
+        public GameApp(IInputProvider inputProvider, IOutputProvider outputProvider,  IDeck deck) {
             this.inputProvider = inputProvider;
             this.outputProvider = outputProvider;
-            this.winChecker = winChecker;
+            
             this.deck = deck;
             players = new List<IPlayer>();
             GameState = GameState.RUNNING;
 
             Welcome();
         }
+        /// <summary>
+        /// BlackjackWinChecker, checks for the win condition
+        /// </summary>
+   
+
+
+
+
+        /// <summary>
+        /// Check if the hand total equals a win condition
+        /// </summary>
+        /// <param name="hand1">The Dealer hand</param>
+        /// <param name="hand2">The HumanPlayer hand</param>
+        /// <returns></returns>
+        public WinState IsWin(IHand hand1, IHand hand2)
+        {
+            //Compare the total values for win,draw or lose condition
+            if (hand2.CompareTo(hand1) > 0)
+                WinState = WinState.win;
+            else if (hand2.CompareTo(hand1) == 0)
+                WinState = WinState.draw;
+            else
+                WinState = WinState.lose;
+
+            return WinState;
+        }
+
+        /// <summary>
+        /// takes an IHand method and calls the GetTotalValue method
+        /// </summary>
+        /// <param name="hand"></param>
+        /// <returns>a boolean defining if the value is greater than 21</returns>
+        public bool IsTwentyOne(IHand hand)
+        {
+            if (hand == null)
+                throw new ArgumentNullException();
+
+            int handTotal = hand.GetTotalValue(hand.Cards);
+            return handTotal == 21;
+
+        }
+        
 
         private void Welcome() {
             outputProvider.WriteLine(MessageProvider.M_WelcomeMessage);
@@ -71,7 +119,7 @@ namespace Blackjack {
         }
 
         public void EndRoundPhase() {
-            WinState ws = winChecker.IsWin(dealer.Hand, players[0].Hand);
+            WinState ws = IsWin(dealer.Hand, players[0].Hand);
             dealer.Hand.Cards.ForEach(x => x.IsHidden = false);
 
             Console.SetCursorPosition(0, boardTop);
@@ -286,7 +334,7 @@ namespace Blackjack {
                 playerName = inputProvider.Read();
             } while (string.IsNullOrWhiteSpace(playerName));
 
-            players.Add(new HumanPlayer(new AltBlackjackMoveProvider(inputProvider), playerName));
+            players.Add(new HumanPlayer(new BlackjackMoveProvider(inputProvider), playerName));
         }
     }
 }
