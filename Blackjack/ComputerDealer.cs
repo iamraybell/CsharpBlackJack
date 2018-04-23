@@ -10,7 +10,7 @@ namespace Blackjack {
     public class ComputerDealer : IPlayer {
         public IHand Hand { get; set; }
         public string Name { get; set; }
-
+        public PlayerType type { get; private set; }
         public bool StillInPlay { get; set; }
         public Bank bank { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public bool IsHuman { get; set; }
@@ -21,6 +21,7 @@ namespace Blackjack {
             IsHuman = false;
             Hand = new Hand();
             Name = "Dealer";
+            type = PlayerType.Computer;
         }
 
 

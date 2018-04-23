@@ -10,6 +10,7 @@ namespace Blackjack {
     class HumanPlayer : IPlayer {
         public IHand Hand { get; set; }
         public string Name { get; set; }
+        public PlayerType type { get; private set; }
         public bool StillInPlay { get; set; }
         public bool IsHuman { get; set; }
 
@@ -25,6 +26,7 @@ namespace Blackjack {
             bank = new Bank();
             Hand = new Hand();
             Name = name;
+            type = PlayerType.Human;
         }
 
         public PlayerAction GetAction() {

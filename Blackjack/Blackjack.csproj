@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlackjackMoveProvider.cs" />
+    <Compile Include="Enums\PlayerType.cs" />
     <Compile Include="GameApp.cs" />
     <Compile Include="Bank.cs" />
     <Compile Include="Card.cs" />

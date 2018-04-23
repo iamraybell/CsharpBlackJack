@@ -174,7 +174,7 @@ namespace Blackjack {
             PrintTableState();
 
 
-            if (cPlayer.IsHuman) {
+            if (cPlayer.type == PlayerType.Human) {
                 Console.SetCursorPosition(0, boardTop + promptLine);
                 GetPlayerBet(cPlayer);
             }
@@ -190,7 +190,7 @@ namespace Blackjack {
                 PrintTableState();
                 if (cPlayer.StillInPlay) {
                     Console.SetCursorPosition(0, boardTop + promptLine + 1);
-                    if (cPlayer.IsHuman) {
+                    if (cPlayer.type == PlayerType.Human) {
                         outputProvider.WriteLine(cPlayer.Name + MessageProvider.M_PlayerActionPrompt);
                     } else {
                         outputProvider.WriteLine("--------------------------------------------------------------------------------------------------------------------------\t\t\t\t\t");

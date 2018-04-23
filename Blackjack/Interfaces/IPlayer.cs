@@ -12,7 +12,7 @@ namespace Blackjack.Interfaces
         String Name { get; set; }
         IHand Hand { get; set; }
         Bank bank { get; set; }
-        bool IsHuman { get; set; }
+        PlayerType type { get; }
 
         bool StillInPlay { get; set; }
 
