@@ -9,6 +9,7 @@ namespace Blackjack
 {
     public class MessageProvider : IMessageProvider
     {
+
         public static string M_WelcomeMessage = @"Welcome to...
 
               __                                               
@@ -33,45 +34,13 @@ namespace Blackjack
                /             Credit for the hand art - Chris Ferguson (found on Google)   
 
 ";
-        public static string M_RulesMessage = 
+        public static string M_RulesMessage =
 @"****  Blackjack pays 3 to 2.                 ****
 ****  Dealer draws to 16, must stand on 17.  ****";
         public static string M_PromptPlayerName = "Please enter a player name: ";
         public static string M_BetPrompt = "Make your best bet! :";
         public static string M_PlayerActionPrompt = " Do you want to 'Hit' or 'Stand'? :\t\t\t\t\t\t\t\t";
         public static string M_BankString = "Bank";
-        public static string M_PlayerWon = @"
-
-   #                                                                                                                            
-  # #   #    #  ####  ##### #    # ###### #####     #    # # #    #           #####  ####   ####     ######   ##    ####  #   # 
- #   #  ##   # #    #   #   #    # #      #    #    #    # # ##   #             #   #    # #    #    #       #  #  #       # #  
-#     # # #  # #    #   #   ###### #####  #    #    #    # # # #  #             #   #    # #    #    #####  #    #  ####    #   
-####### #  # # #    #   #   #    # #      #####     # ## # # #  # #             #   #    # #    #    #      ######      #   #   
-#     # #   ## #    #   #   #    # #      #   #     ##  ## # #   ##    ###      #   #    # #    #    #      #    # #    #   #   
-#     # #    #  ####    #   #    # ###### #    #    #    # # #    #    ###      #    ####   ####     ###### #    #  ####    #  
-                                                                        #
-                                                                       #
-";
-        public static string M_PlayerLost = @"
-
-###                         ###                                                         ###                                           
- #      ####    ##   #    # ### #####    #####  ###### #      # ###### #    # ######     #     #       ####   ####  #####             
- #     #    #  #  #  ##   #  #    #      #    # #      #      # #      #    # #          #     #      #    # #        #               
- #     #      #    # # #  # #     #      #####  #####  #      # #####  #    # #####      #     #      #    #  ####    #               
- #     #      ###### #  # #       #      #    # #      #      # #      #    # #          #     #      #    #      #   #    
- #     #    # #    # #   ##       #      #    # #      #      # #       #  #  #          #     #      #    # #    #   #   ### ### ### 
-###     ####  #    # #    #       #      #####  ###### ###### # ######   ##   ######    ###    ######  ####   ####    #   ### ### ### 
-
-
-";
-        public static string M_PlayerDraw = @"
-
-
-
-                                           A Draw is okay, that's okay.
-
-
-";
         public static string M_QuitMessage = @"
 
    _____              __  __               _____                          ______              __                   
@@ -91,6 +60,7 @@ namespace Blackjack
         /// </summary>
         public string Welcome { get; set; }
 
+
         /// <summary>
         /// The rules of the game
         /// </summary>
@@ -101,11 +71,9 @@ namespace Blackjack
         /// <param name="welcome"> The welcome message</param>
         /// <param name="rules"> The rules of the game</param>
         /// </summary>
-        public MessageProvider(string welcome, string rules)
-        {
-            this.Welcome = welcome;
-            this.Rules = rules;
-            ConsoleInputAndOutputProvider consoleOutputProvider = new ConsoleInputAndOutputProvider();
+        public MessageProvider() {
+
+
         }
 
         /// <summary>
@@ -149,5 +117,34 @@ namespace Blackjack
             //call the console output provider's writeLine method and pass in the rules; this outputs the rules to the console
             consoleOutputProvider.WriteLine(this.Rules);
         }
+        public string M_PlayerWon(string playerName)
+        {
+            return $"you won, {playerName}!";
+
+        }
+        public string M_PlayerLost(){
+            return@"
+
+            ###                         ###                                                         ###                                           
+             #      ####    ##   #    # ### #####    #####  ###### #      # ###### #    # ######     #     #       ####   ####  #####             
+             #     #    #  #  #  ##   #  #    #      #    # #      #      # #      #    # #          #     #      #    # #        #               
+             #     #      #    # # #  # #     #      #####  #####  #      # #####  #    # #####      #     #      #    #  ####    #               
+             #     #      ###### #  # #       #      #    # #      #      # #      #    # #          #     #      #    #      #   #    
+             #     #    # #    # #   ##       #      #    # #      #      # #       #  #  #          #     #      #    # #    #   #   ### ### ### 
+            ###     ####  #    # #    #       #      #####  ###### ###### # ######   ##   ######    ###    ######  ####   ####    #   ### ### ### 
+
+
+            ";
+        }
+        public string M_PlayerDraw()
+        {
+            return @"
+
+                                           A Draw is okay, that's okay.
+
+            ";
+        }
+
+
     }
 }

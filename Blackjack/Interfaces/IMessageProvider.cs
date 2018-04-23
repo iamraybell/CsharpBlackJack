@@ -32,5 +32,8 @@ namespace Blackjack.Interfaces
         /// <param name="rules">The rules to be printed</param>
         /// </summary>
         void printRules();
+        string M_PlayerWon(string PlayerName);
+        string M_PlayerLost();
+        string M_PlayerDraw();
     }
 }

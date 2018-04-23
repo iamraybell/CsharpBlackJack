@@ -14,6 +14,7 @@ namespace Blackjack {
         /// </summary>
         public WinState WinState { get; private set; }
 
+        private IPlayer curPlayer;
 
         private IInputProvider inputProvider { get; set; }
         private IOutputProvider outputProvider { get; set; }
@@ -24,16 +25,18 @@ namespace Blackjack {
         public GameState GameState { get; private set; }
         private int PlayerBet { get; set; }
 
+        private IMessageProvider messageProvider;
+
         const int boardTop = 5;
 
 
-        public GameApp(IInputProvider inputProvider, IOutputProvider outputProvider,  IDeck deck) {
+        public GameApp(IInputProvider inputProvider, IOutputProvider outputProvider, IMessageProvider mp,  IDeck deck) {
             this.inputProvider = inputProvider;
             this.outputProvider = outputProvider;
-            
             this.deck = deck;
             players = new List<IPlayer>();
             GameState = GameState.RUNNING;
+            this.messageProvider = mp;
 
             Welcome();
         }
@@ -148,16 +151,16 @@ namespace Blackjack {
 
         private void PlayerWon() {
             players[0].bank.Deposit((int) (PlayerBet * 1.5));
-            outputProvider.WriteLine(MessageProvider.M_PlayerWon);
+            outputProvider.WriteLine(messageProvider.M_PlayerWon(players[0].Name));
         }
 
         private void PlayerLost() {
-            outputProvider.WriteLine(MessageProvider.M_PlayerLost);
+            outputProvider.WriteLine(messageProvider.M_PlayerLost());
         }
 
         private void PlayerDraw() {
             players[0].bank.Deposit(PlayerBet);
-            outputProvider.WriteLine(MessageProvider.M_PlayerDraw);
+            outputProvider.WriteLine(messageProvider.M_PlayerDraw());
 
         }
 
@@ -327,13 +330,13 @@ namespace Blackjack {
 
         private void GetCreatePlayers() {
 
-            string playerName = "";
+            string playerName = string.Empty;
 
-            do {
+            while (string.IsNullOrWhiteSpace(playerName)) {
                 outputProvider.WriteLine(MessageProvider.M_PromptPlayerName);
                 playerName = inputProvider.Read();
-            } while (string.IsNullOrWhiteSpace(playerName));
 
+            } ;
             players.Add(new HumanPlayer(new BlackjackMoveProvider(inputProvider), playerName));
         }
     }
