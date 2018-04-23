@@ -105,7 +105,7 @@ namespace Blackjack
         {
             this.Welcome = welcome;
             this.Rules = rules;
-            ConsoleOutputProvider consoleOutputProvider = new ConsoleOutputProvider();
+            ConsoleInputAndOutputProvider consoleOutputProvider = new ConsoleInputAndOutputProvider();
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Blackjack
         /// </summary>
         public void printWelcome(string welcome)
         {
-            ConsoleOutputProvider consoleOutputProvider = new ConsoleOutputProvider();
+            ConsoleInputAndOutputProvider consoleOutputProvider = new ConsoleInputAndOutputProvider();
             //call the console output provider's writeLine method and pass in the welcome; this outputs the rules to the console
             consoleOutputProvider.WriteLine(welcome);
         }
@@ -124,7 +124,7 @@ namespace Blackjack
         /// </summary>
         public void printWelcome()
         {
-            ConsoleOutputProvider consoleOutputProvider = new ConsoleOutputProvider();
+            ConsoleInputAndOutputProvider consoleOutputProvider = new ConsoleInputAndOutputProvider();
             //call the console output provider's writeLine method and pass in the welcome; this outputs the rules to the console
             consoleOutputProvider.WriteLine(this.Welcome);
         }
@@ -135,7 +135,7 @@ namespace Blackjack
         /// </summary>
         public void printRules(string rules)
         {
-            ConsoleOutputProvider consoleOutputProvider = new ConsoleOutputProvider();
+            ConsoleInputAndOutputProvider consoleOutputProvider = new ConsoleInputAndOutputProvider();
             //call the console output provider's writeLine method and pass in the rules; this outputs the rules to the console
             consoleOutputProvider.WriteLine(rules);
         }
@@ -145,7 +145,7 @@ namespace Blackjack
         /// </summary>
         public void printRules()
         {
-            ConsoleOutputProvider consoleOutputProvider = new ConsoleOutputProvider();
+            ConsoleInputAndOutputProvider consoleOutputProvider = new ConsoleInputAndOutputProvider();
             //call the console output provider's writeLine method and pass in the rules; this outputs the rules to the console
             consoleOutputProvider.WriteLine(this.Rules);
         }

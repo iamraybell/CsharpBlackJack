@@ -47,8 +47,7 @@
     <Compile Include="Bank.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="ComputerDealer.cs" />
-    <Compile Include="ConsoleInputProvider.cs" />
-    <Compile Include="ConsoleOutputProvider.cs" />
+    <Compile Include="ConsoleInputAndOutputProvider.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Enums\CardSuit.cs" />
     <Compile Include="Enums\CardName.cs" />

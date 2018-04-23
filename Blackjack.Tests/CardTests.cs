@@ -15,14 +15,7 @@ namespace Blackjack.Tests {
             Assert.AreEqual(10, Card.Create(CardName.King, CardSuit.Hearts).Value);
         }
 
-        [TestMethod]
-        public void KingPlusTenIs20()
-        {
-            int value = CardAccumulator.Calculate(
-                Card.Create(CardName.King, CardSuit.Hearts),
-                Card.Create(CardName.Ten, CardSuit.Hearts));
-            Assert.AreEqual(20, value);
-        }
+
 
         [TestMethod]
         public void TestCard() {

@@ -9,12 +9,20 @@ namespace Blackjack {
     /// <summary>
     /// The ConsoleOutputProvider class, provides outputs to the Console
     /// </summary>
-    public class ConsoleOutputProvider : IOutputProvider
+    public class ConsoleInputAndOutputProvider : IOutputProvider, IInputProvider
     {
         /// <summary>
         /// Write the specified output to the console
         /// </summary>
         /// <param name="output">The output</param>
+        ///
+
+        public string Read()
+        {
+            // This function should read a line from the console and return it
+            var input = Console.ReadLine();
+            return input;
+        }
         public void Write(string output)
         {
            Console.Write(output);

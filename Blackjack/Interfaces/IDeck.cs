@@ -10,6 +10,8 @@ namespace Blackjack.Interfaces {
 
         void Init();
 
+        IEnumerable<ICard> GetCards();
+
         void Shuffle();
 
         ICard Draw();
