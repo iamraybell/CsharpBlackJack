@@ -1,4 +1,7 @@
-﻿namespace Blackjack.Interfaces {
+﻿using Blackjack.Interfaces;
+using System.Collections.Generic;
+
+namespace Blackjack.Interfaces {
     /// <summary>
     /// The IOutputProvider interface, represents something that provides outputs
     /// </summary>
@@ -26,5 +29,6 @@
         void Clear();
         void Freeze();
         void SetCursorPosition(int v, int x);
+        void PrintEmptyCards(List<ICard> cs, int top);
     }
 }

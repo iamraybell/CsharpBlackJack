@@ -63,5 +63,33 @@ namespace Blackjack {
         {
             Console.SetCursorPosition(v, x);
         }
+        public void PrintEmptyCards(List<ICard> cs, int top)
+        {
+            StringBuilder sb = new StringBuilder("");
+
+            string[] arr = new string[] { "┌─────┐", "|     |", "|     |", "|     |", "└─────┘" };
+
+
+            foreach (string str in arr)
+            {
+                for (int i = 0; i < cs.Count; i++)
+                {
+                    sb.Append(str + " ");
+
+                }
+                sb.Append("\t\t\t\t\t\t\t\t\t\t\t\n");
+            }
+
+           SetCursorPosition(0, top);
+           WriteLine(sb.ToString());
+
+            int cardPrintWidth = 8;
+
+            for (int i = 0; i < cs.Count; i++)
+            {
+                SetCursorPosition((cardPrintWidth * i) + 2, top + 1);
+                Write(cs[i].ToString());
+            }
+        }
     }
 }

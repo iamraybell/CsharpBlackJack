@@ -236,7 +236,6 @@ namespace Blackjack {
         private void QuitApplication() {
             MyAudioPlayer.playSeeYou();
             outputProvider.Clear();
-
             outputProvider.Write(MessageProvider.M_QuitMessage);
             outputProvider.Freeze();
             Environment.Exit(0);
@@ -244,59 +243,34 @@ namespace Blackjack {
 
         public void PrintEndTableState() {
             outputProvider.WriteLine(dealer.Name + " - " + dealer.Hand.GetTotalValue(dealer.Hand.Cards));
-            PrintEmptyCards(dealer.Hand.Cards, boardTop + 1);
+            outputProvider.PrintEmptyCards(dealer.Hand.Cards, boardTop + 1);
 
             foreach (IPlayer p in players) {
 
                 outputProvider.SetCursorPosition(0, boardTop + 6);
                 outputProvider.WriteLine(p.Name + " - " + p.Hand.GetTotalValue(p.Hand.Cards));
-                PrintEmptyCards(p.Hand.Cards, boardTop + 7);
+                outputProvider.PrintEmptyCards(p.Hand.Cards, boardTop + 7);
             }
         }
 
         public void PrintTableState() {
             outputProvider.WriteLine(dealer.Name);
-            PrintEmptyCards(dealer.Hand.Cards, boardTop + 1);
+            outputProvider.PrintEmptyCards(dealer.Hand.Cards, boardTop + 1);
             
             foreach (IPlayer p in players) {
 
                 outputProvider.SetCursorPosition(0, boardTop + 6);
                 outputProvider.WriteLine(p.Name + " - " + p.Hand.GetTotalValue(p.Hand.Cards));
-                PrintEmptyCards(p.Hand.Cards, boardTop + 7);
+                outputProvider.PrintEmptyCards(p.Hand.Cards, boardTop + 7);
             }
         }
 
-        private void PrintEmptyCards(List<ICard> cs, int top) {
-            StringBuilder sb = new StringBuilder("");
 
-            string[] arr = new string[] { "┌─────┐", "|     |", "|     |", "|     |", "└─────┘" };
-
-
-            foreach (string str in arr) {
-                for (int i = 0; i < cs.Count; i++) {
-                    sb.Append(str + " ");
-
-                }
-                sb.Append("\t\t\t\t\t\t\t\t\t\t\t\n");
-            }
-
-            outputProvider.SetCursorPosition(0, top);
-            outputProvider.WriteLine(sb.ToString());
-
-            int cardPrintWidth = 8;
-
-            for (int i = 0; i < cs.Count; i++) {
-                outputProvider.SetCursorPosition((cardPrintWidth * i) + 2, top + 1);
-                outputProvider.Write(cs[i].ToString());
-            }
-        }
 
         private void SetupRound() {
             PlayerBet = 0;
             outputProvider.Clear();
             outputProvider.WriteLine(MessageProvider.M_RulesMessage);
-            //outputProvider.SetCursorPosition(0, boardTop - 2);
-            //outputProvider.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t");
             outputProvider.SetCursorPosition(0, boardTop - 2);
             outputProvider.WriteLine(players[0].Name + "'s bank: \t\t\t\t\t\t\t\t.");
 

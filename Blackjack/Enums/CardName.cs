@@ -40,7 +40,7 @@ namespace Blackjack.Enums
 
     public static class Extensions {
 
-        private static string GetEnumDescription(CardName value) {
+        private static string GetCardDisplayName(CardName value) {
             FieldInfo fi = value.GetType().GetField(value.ToString());
             DescriptionAttribute[] attributes =
                 (DescriptionAttribute[])fi.GetCustomAttributes(
@@ -55,7 +55,7 @@ namespace Blackjack.Enums
 
         public static string GetString(this CardName cv) {
 
-            return GetEnumDescription(cv);
+            return GetCardDisplayName(cv);
         }
 
         /*public static int GetIntValue(this CardValue cv) {
