@@ -35,6 +35,7 @@ namespace Blackjack {
         public void WriteLine(string output)
         {
             Console.WriteLine(output);
+            
         }
 
         /// <summary>
@@ -43,6 +44,10 @@ namespace Blackjack {
         public void WriteLine()
         {
             Console.WriteLine();
+        }
+        public void Freeze()
+        {
+            Console.Read();
         }
 
         /// <summary>

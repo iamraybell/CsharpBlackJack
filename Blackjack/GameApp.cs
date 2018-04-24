@@ -146,7 +146,7 @@ namespace Blackjack {
             dealer.ClearHand();
             players.ForEach(x => x.ClearHand());
 
-            Console.ReadKey();
+            outputProvider.Freeze();
         }
 
         private void PlayerWon() {

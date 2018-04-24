@@ -24,5 +24,6 @@
         /// Clear the output
         /// </summary>
         void Clear();
+        void Freeze();
     }
 }
