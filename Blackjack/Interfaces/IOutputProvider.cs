@@ -25,5 +25,6 @@
         /// </summary>
         void Clear();
         void Freeze();
+        void SetCursorPosition(int v, int x);
     }
 }

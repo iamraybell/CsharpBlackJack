@@ -125,13 +125,22 @@ namespace Blackjack {
             WinState ws = IsWin(dealer.Hand, players[0].Hand);
             dealer.Hand.Cards.ForEach(x => x.IsHidden = false);
 
-            Console.SetCursorPosition(0, boardTop);
+            outputProvider.SetCursorPosition(0, boardTop);
             PrintEndTableState();
             outputProvider.WriteLine();
+            outputProvider.SetCursorPosition(0, boardTop + promptLine + 3);
 
-            Console.SetCursorPosition(0, boardTop + promptLine + 3);
+            CheckWinstate(ws);
 
-            switch (ws) {
+            dealer.ClearHand();
+            players.ForEach(x => x.ClearHand());
+            outputProvider.Freeze();
+        }
+
+        private void CheckWinstate(WinState ws)
+        {
+            switch (ws)
+            {
                 case WinState.win:
                     PlayerWon();
                     break;
@@ -142,11 +151,6 @@ namespace Blackjack {
                     PlayerDraw();
                     break;
             }
-
-            dealer.ClearHand();
-            players.ForEach(x => x.ClearHand());
-
-            outputProvider.Freeze();
         }
 
         private void PlayerWon() {
@@ -170,26 +174,26 @@ namespace Blackjack {
             PlayerAction pa = PlayerAction.Stand;
 
 
-            Console.SetCursorPosition(0, boardTop);
+            outputProvider.SetCursorPosition(0,boardTop);
             PrintTableState();
 
 
             if (cPlayer.type == PlayerType.Human) {
-                Console.SetCursorPosition(0, boardTop + promptLine);
+                outputProvider.SetCursorPosition(0, boardTop + promptLine);
                 GetPlayerBet(cPlayer);
             }
 
             do {
-                Console.SetCursorPosition(0, boardTop - 2);
+                outputProvider.SetCursorPosition(0, boardTop - 2);
                 outputProvider.WriteLine(players[0].Name + "'s bank: \t\t\t\t\t\t\t\t.");
 
-                Console.SetCursorPosition(15, 3);
+                outputProvider.SetCursorPosition(15, 3);
                 outputProvider.WriteLine(players[0].bank.Balance.ToString());
 
-                Console.SetCursorPosition(0, boardTop);
+                outputProvider.SetCursorPosition(0, boardTop);
                 PrintTableState();
                 if (cPlayer.StillInPlay) {
-                    Console.SetCursorPosition(0, boardTop + promptLine + 1);
+                    outputProvider.SetCursorPosition(0, boardTop + promptLine + 1);
                     if (cPlayer.type == PlayerType.Human) {
                         outputProvider.WriteLine(cPlayer.Name + MessageProvider.M_PlayerActionPrompt);
                     } else {
@@ -197,7 +201,7 @@ namespace Blackjack {
                     }
                     outputProvider.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t.");
 
-                    Console.SetCursorPosition(0, boardTop + promptLine + 2);
+                    outputProvider.SetCursorPosition(0, boardTop + promptLine + 2);
 
                     pa = cPlayer.GetAction();
                     DoAction(cPlayer, pa);
@@ -234,7 +238,7 @@ namespace Blackjack {
             outputProvider.Clear();
 
             outputProvider.Write(MessageProvider.M_QuitMessage);
-            Console.ReadKey();
+            outputProvider.Freeze();
             Environment.Exit(0);
         }
 
@@ -244,7 +248,7 @@ namespace Blackjack {
 
             foreach (IPlayer p in players) {
 
-                Console.SetCursorPosition(0, boardTop + 6);
+                outputProvider.SetCursorPosition(0, boardTop + 6);
                 outputProvider.WriteLine(p.Name + " - " + p.Hand.GetTotalValue(p.Hand.Cards));
                 PrintEmptyCards(p.Hand.Cards, boardTop + 7);
             }
@@ -256,7 +260,7 @@ namespace Blackjack {
             
             foreach (IPlayer p in players) {
 
-                Console.SetCursorPosition(0, boardTop + 6);
+                outputProvider.SetCursorPosition(0, boardTop + 6);
                 outputProvider.WriteLine(p.Name + " - " + p.Hand.GetTotalValue(p.Hand.Cards));
                 PrintEmptyCards(p.Hand.Cards, boardTop + 7);
             }
@@ -276,13 +280,13 @@ namespace Blackjack {
                 sb.Append("\t\t\t\t\t\t\t\t\t\t\t\n");
             }
 
-            Console.SetCursorPosition(0, top);
+            outputProvider.SetCursorPosition(0, top);
             outputProvider.WriteLine(sb.ToString());
 
             int cardPrintWidth = 8;
 
             for (int i = 0; i < cs.Count; i++) {
-                Console.SetCursorPosition((cardPrintWidth * i) + 2, top + 1);
+                outputProvider.SetCursorPosition((cardPrintWidth * i) + 2, top + 1);
                 outputProvider.Write(cs[i].ToString());
             }
         }
@@ -291,12 +295,12 @@ namespace Blackjack {
             PlayerBet = 0;
             outputProvider.Clear();
             outputProvider.WriteLine(MessageProvider.M_RulesMessage);
-            //Console.SetCursorPosition(0, boardTop - 2);
+            //outputProvider.SetCursorPosition(0, boardTop - 2);
             //outputProvider.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t");
-            Console.SetCursorPosition(0, boardTop - 2);
+            outputProvider.SetCursorPosition(0, boardTop - 2);
             outputProvider.WriteLine(players[0].Name + "'s bank: \t\t\t\t\t\t\t\t.");
 
-            Console.SetCursorPosition(15, 3);
+            outputProvider.SetCursorPosition(15, 3);
             outputProvider.WriteLine(players[0].bank.Balance.ToString());
 
             deck.Shuffle();

@@ -58,5 +58,10 @@ namespace Blackjack {
             // This function should clear the output
             Console.Clear();
         }
+
+        public void SetCursorPosition(int v, int x)
+        {
+            Console.SetCursorPosition(v, x);
+        }
     }
 }
