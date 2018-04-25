@@ -42,16 +42,25 @@ namespace Blackjack.Enums
 
     public static class Extensions
     {
-
-        private static string GetCardDisplayName(CardName value)
+        private static Dictionary<FieldInfo, string> cache = new Dictionary<FieldInfo, string>();
+        private static string GetCardDisplayName(this CardName value)
         {
+            
             FieldInfo fi = value.GetType().GetField(value.ToString());
+            if (cache.ContainsKey(fi))
+            {
+              
+                return cache[fi];
+            }
+
             DescriptionAttribute[] attributes =
                 (DescriptionAttribute[])fi.GetCustomAttributes(
                     typeof(DescriptionAttribute), false);
 
             if (attributes.Length > 0)
             {
+                
+                cache.Add(fi, attributes[0].Description);
                 return attributes[0].Description;
             }
             else
