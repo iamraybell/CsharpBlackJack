@@ -35,7 +35,7 @@ namespace Blackjack {
             this.outputProvider = outputProvider;
             this.deck = deck;
             players = new List<IPlayer>();
-            GameState = GameState.RUNNING;
+            GameState = GameState.Running;
             this.messageProvider = mp;
 
             Welcome();
@@ -97,7 +97,7 @@ namespace Blackjack {
             // Secondary Setup
 
             // Game Loop
-            while (GameState != GameState.QUITGAME) {
+            while (GameState != GameState.quitGame) {
 
                 SetupRound();
 

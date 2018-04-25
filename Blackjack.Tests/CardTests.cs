@@ -20,44 +20,36 @@ namespace Blackjack.Tests {
         [TestMethod]
         public void TestCard() {
             // arrange
-            Card card;
-            Card card2;
-
+      
             CardSuit expSuit = CardSuit.Clubs;
             CardName expName = CardName.Ace;
-
             int expVal = 11;
 
             // act
-            card = new Card(CardSuit.Clubs, CardName.Ace, expVal);
+            var card = Card.Create( CardName.Ace, CardSuit.Clubs);
 
             // assert
             Assert.AreEqual(expSuit, card.Suit);
             Assert.AreEqual(expName, card.Name);
             Assert.AreEqual(expVal, card.Value);
-            Assert.IsTrue(card.IsHidden);
+            
             
         }
 
         [TestMethod]
-        public void TestToString() {
+        public void TestToStringWhenNotHidden() {
             // arrange
-            Card card = new Card(CardSuit.Clubs, CardName.Ace, 11);
-            Card card2 = new Card(CardSuit.Clubs, CardName.Ace, 11);
-
+            Card card = Card.Create(CardName.Ace, CardSuit.Clubs);
             string exp = "[A]";
-            string exp2 = "[*]";
-
-            // act
-
             card.IsHidden = false;
 
-            string act = card.ToString();
-            string act2 = card2.ToString();
 
+            // act
+            string act = card.ToString();
+           
             // assert
             Assert.AreEqual(exp, act);
-            Assert.AreEqual(exp2, act2);
+            
 
         }
     }

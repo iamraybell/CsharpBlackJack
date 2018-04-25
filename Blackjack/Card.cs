@@ -19,28 +19,22 @@ namespace Blackjack {
         private CardName king;
         private CardSuit hearts;
 
-        public CardSuit Suit { get;}
-        public CardName Name { get; }
+        public CardSuit Suit { get; private set; }
+        public CardName Name { get; private set; }
 
-        public static Card Create(CardName king, CardSuit hearts)
+        public static Card Create(CardName name, CardSuit suit)
         {
-            return new Card(king, hearts);
+           var curCard = new Card();
+            curCard.Name = name;
+            curCard.Suit = suit;
+            curCard.Value = CalculateValue(name);
+            return curCard;
         }
 
         public int Value { get; set; }
         public bool IsHidden { get; set;}
 
-        public Card(CardSuit suit, CardName name, int value) {
-            Suit = suit;
-            Name = name;
-            Value = value;
-            IsHidden = true;
-        }
-
-        public Card(CardName name, CardSuit sute)
-            : this(sute, name, CalculateValue(name))
-        {
-        }
+        public Card() { }
 
         private static int CalculateValue(CardName name)
         {

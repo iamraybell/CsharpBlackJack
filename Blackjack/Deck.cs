@@ -28,9 +28,8 @@ namespace Blackjack {
             foreach (CardSuit suit in suits)
             {
                 foreach (CardName name in names)
-                {
-                    int valueOfName = GetValue(name);
-                    Card cardToAddtoList = new Card(suit, name, valueOfName);
+                { 
+                    Card cardToAddtoList = Card.Create( name, suit);
                     listOfCardsToReturn.Add(cardToAddtoList);
                 }
             }

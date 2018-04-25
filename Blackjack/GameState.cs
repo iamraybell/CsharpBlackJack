@@ -8,12 +8,12 @@ namespace Blackjack.Enums
 {
     public enum GameState
     {
-        RUNNING,
-        DEALING,
-        INITIATING_ROUND,
-        INITIATING_TURN,
-        WIN_CHECKING,
-        TERMINATING,
-        QUITGAME
+        Running,
+        Dealing,
+        InitiatingRound,
+        InitiatingTurn,
+        winChecking,
+        terminating,
+        quitGame
     }
 }
