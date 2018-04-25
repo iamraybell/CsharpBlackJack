@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlackjackMoveProvider.cs" />
+    <Compile Include="ICard.cs" />
     <Compile Include="PlayerType.cs" />
     <Compile Include="GameApp.cs" />
     <Compile Include="Bank.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Exceptions\InvalidInputException.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="HumanPlayer.cs" />
-    <Compile Include="ICard.cs" />
     <Compile Include="IHand.cs" />
     <Compile Include="IInputProvider.cs" />
     <Compile Include="IDeck.cs" />

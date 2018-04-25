@@ -1,10 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Blackjack.Interfaces;
 using Blackjack.Enums;
+using Blackjack.Interfaces;
 using Moq;
 using System.Collections.Generic;
-
 namespace Blackjack.Tests {
     [TestClass]
     public class HandTests {
